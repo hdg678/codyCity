@@ -1,0 +1,17 @@
+<%= form_for(@student) do |f| %>
+  <% if @student.errors.any? %>
+    <%= @student.errors.join(",") %>
+  <% end %>
+
+  <div>
+  	<%= f.label :first_name %>
+    <%= f.text_field :first_name %>
+  </div>
+
+  <div>
+  	<%= f.label :last_name %>
+    <%= f.text_field :last_name %>
+  </div>
+
+  <%= f.submit %>
+<% end %>
