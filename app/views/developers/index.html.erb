@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Developers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Email</th>
+      <th>Password</th>
+      <th>Github username</th>
+      <th>Github password</th>
+      <th>Is teacher</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @developers.each do |developer| %>
+      <tr>
+        <td><%= developer.first_name %></td>
+        <td><%= developer.last_name %></td>
+        <td><%= developer.email %></td>
+        <td><%= developer.password %></td>
+        <td><%= developer.github_username %></td>
+        <td><%= developer.github_password %></td>
+        <td><%= developer.is_teacher %></td>
+        <td><%= link_to 'Show', developer %></td>
+        <td><%= link_to 'Edit', edit_developer_path(developer) %></td>
+        <td><%= link_to 'Destroy', developer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Developer', new_developer_path %>
