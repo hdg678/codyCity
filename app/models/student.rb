@@ -6,9 +6,6 @@ class Student < ApplicationRecord
  #      t.string :email
  #      t.string :password
 
- def self.hello
- 	puts "hello class method"
- 	
- end
+ 	has_and_belongs_to_many :courses
  
 end
