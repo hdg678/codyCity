@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  lesson: one
+  title: MyString
+  instructions: MyText
+  point_value: MyString
+  test_file_url: MyString
+
+two:
+  lesson: two
+  title: MyString
+  instructions: MyText
+  point_value: MyString
+  test_file_url: MyString
