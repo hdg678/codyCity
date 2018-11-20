@@ -2,6 +2,12 @@
 
 one:
   title: MyString
+  description: MyString
+  image_url: MyString
+  developer: one
 
 two:
   title: MyString
+  description: MyString
+  image_url: MyString
+  developer: two

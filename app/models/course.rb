@@ -1,12 +1,9 @@
 class Course < ApplicationRecord
+  belongs_to :organization
+  belongs_to :developer
 
+  has_many :lessons
 
-	has_and_belongs_to_many :developers
-
-	has_and_belongs_to_many :students
-
-	has_and_belongs_to_many :instructors
-
-	has_many :lessons
-
+  validates :title, presence: true
+  validates :description, presence: true
 end
