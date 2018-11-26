@@ -1,7 +1,9 @@
-class RegistrationsController < Devise::RegistrationsController
+class Api::V1::RegistrationsController < Devise::RegistrationsController
   include Subdomains
 
   before_action :require_token, only: [:new, :create]
+  skip_before_action :verify_authenticity_token, only: [:new, :create]
+  respond_to :json
 
   def new
     build_resource if resource.nil?
@@ -9,6 +11,8 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def create
+    print(sign_up_params)
+    print("\n")
     build_resource(sign_up_params.merge({ email: @ost.email }))
     resource.organization_id = @ost.organization_id
     resource.save
@@ -46,5 +50,8 @@ private
     build_resource(email: @ost.email)
   end
 
+  def sign_up_params
+    params.require(:user).permit(:email, :password, :password_confirmation)
+  end
 
 end
