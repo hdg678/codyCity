@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_20_011945) do
+ActiveRecord::Schema.define(version: 2018_11_27_033608) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "admins", force: :cascade do |t|
+  create_table "admins", id: :serial, force: :cascade do |t|
     t.integer "organization_id"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 2018_11_20_011945) do
     t.index ["unlock_token"], name: "index_admins_on_unlock_token", unique: true
   end
 
-  create_table "courses", force: :cascade do |t|
+  create_table "courses", id: :serial, force: :cascade do |t|
     t.integer "organization_id"
     t.string "title"
     t.text "description"
@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 2018_11_20_011945) do
     t.index ["organization_id"], name: "index_courses_on_organization_id"
   end
 
-  create_table "developers", force: :cascade do |t|
+  create_table "developers", id: :serial, force: :cascade do |t|
     t.integer "organization_id"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -83,7 +83,7 @@ ActiveRecord::Schema.define(version: 2018_11_20_011945) do
     t.index ["unlock_token"], name: "index_developers_on_unlock_token", unique: true
   end
 
-  create_table "exercises", force: :cascade do |t|
+  create_table "exercises", id: :serial, force: :cascade do |t|
     t.integer "lesson_id"
     t.string "title"
     t.text "instructions"
@@ -94,7 +94,7 @@ ActiveRecord::Schema.define(version: 2018_11_20_011945) do
     t.index ["lesson_id"], name: "index_exercises_on_lesson_id"
   end
 
-  create_table "instructors", force: :cascade do |t|
+  create_table "instructors", id: :serial, force: :cascade do |t|
     t.integer "organization_id"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -122,7 +122,21 @@ ActiveRecord::Schema.define(version: 2018_11_20_011945) do
     t.index ["unlock_token"], name: "index_instructors_on_unlock_token", unique: true
   end
 
-  create_table "lessons", force: :cascade do |t|
+  create_table "jwt_blacklist", force: :cascade do |t|
+    t.string "jti", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["jti"], name: "index_jwt_blacklist_on_jti"
+  end
+
+  create_table "jwt_blacklists", force: :cascade do |t|
+    t.string "jti", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["jti"], name: "index_jwt_blacklists_on_jti"
+  end
+
+  create_table "lessons", id: :serial, force: :cascade do |t|
     t.integer "course_id"
     t.string "title"
     t.datetime "created_at", null: false
@@ -140,13 +154,13 @@ ActiveRecord::Schema.define(version: 2018_11_20_011945) do
     t.index ["organization_id"], name: "index_organization_user_tokens_on_organization_id"
   end
 
-  create_table "organizations", force: :cascade do |t|
+  create_table "organizations", id: :serial, force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "profiles", force: :cascade do |t|
+  create_table "profiles", id: :serial, force: :cascade do |t|
     t.string "viewable_type"
     t.integer "viewable_id"
     t.string "name"
@@ -157,7 +171,7 @@ ActiveRecord::Schema.define(version: 2018_11_20_011945) do
     t.index ["viewable_type", "viewable_id"], name: "index_profiles_on_viewable_type_and_viewable_id"
   end
 
-  create_table "student_courses", force: :cascade do |t|
+  create_table "student_courses", id: :serial, force: :cascade do |t|
     t.integer "course_id"
     t.integer "student_id"
     t.datetime "created_at", null: false
@@ -166,7 +180,7 @@ ActiveRecord::Schema.define(version: 2018_11_20_011945) do
     t.index ["student_id"], name: "index_student_courses_on_student_id"
   end
 
-  create_table "student_exercises", force: :cascade do |t|
+  create_table "student_exercises", id: :serial, force: :cascade do |t|
     t.integer "exercise_id"
     t.integer "student_id"
     t.integer "point_value"
@@ -178,7 +192,7 @@ ActiveRecord::Schema.define(version: 2018_11_20_011945) do
     t.index ["student_id"], name: "index_student_exercises_on_student_id"
   end
 
-  create_table "students", force: :cascade do |t|
+  create_table "students", id: :serial, force: :cascade do |t|
     t.integer "organization_id"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false

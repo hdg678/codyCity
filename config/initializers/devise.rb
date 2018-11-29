@@ -8,7 +8,7 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = 'b974850738241b50cfba5c6e36cf3d23afb6792718194c61383941042c1b140c934ce48173d2c5652a0448d5342699566ef739ea500594f97991ad0d96701356'
+  config.secret_key = 'b974850738241b50cfba5c6e36cf3d23afb6792718194c61383941042c1b140c934ce48173d2c5652a0448d5342699566ef739ea500594f97991ad0d96701356'
   
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
@@ -63,7 +63,7 @@ Devise.setup do |config|
   # It can be set to an array that will enable params authentication only for the
   # given strategies, for example, `config.params_authenticatable = [:database]` will
   # enable it only for database (email + password) authentication.
-  # config.params_authenticatable = true
+  config.params_authenticatable = true
 
   # Tell if authentication through HTTP Auth is enabled. False by default.
   # It can be set to an array that will enable http authentication only for the
@@ -280,4 +280,11 @@ Devise.setup do |config|
   # When using OmniAuth, Devise cannot automatically set OmniAuth path,
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = '/my_engine/users/auth'
+  #config.jwt do |jwt|
+  #  jwt.secret = '9e1f1413fe75b88cbb272341313b01cc36119a64d5880c35011ff35062766c8a9ab3228881caae74926242c80f2f3b5cc6df93db2c5a5b48547efd9945f25a2f'
+  #  jwt.expiration_time = 1.day.to_i
+  #  jwt.dispatch_requests = [
+  #    ['POST', %r{^/api/v1/students/sign_in$}]
+  #  ]
+  #end
 end

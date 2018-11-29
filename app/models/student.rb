@@ -3,7 +3,9 @@ class Student < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
-         :confirmable, :lockable
+         :confirmable,
+         :lockable#,
+         #:jwt_authenticatable, jwt_revocation_strategy: JWTBlacklist
 
   belongs_to :organization
   has_one :profile, as: :viewable
