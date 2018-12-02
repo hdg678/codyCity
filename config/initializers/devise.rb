@@ -280,11 +280,4 @@ Devise.setup do |config|
   # When using OmniAuth, Devise cannot automatically set OmniAuth path,
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = '/my_engine/users/auth'
-  #config.jwt do |jwt|
-  #  jwt.secret = '9e1f1413fe75b88cbb272341313b01cc36119a64d5880c35011ff35062766c8a9ab3228881caae74926242c80f2f3b5cc6df93db2c5a5b48547efd9945f25a2f'
-  #  jwt.expiration_time = 1.day.to_i
-  #  jwt.dispatch_requests = [
-  #    ['POST', %r{^/api/v1/students/sign_in$}]
-  #  ]
-  #end
 end

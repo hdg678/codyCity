@@ -5,18 +5,22 @@ Rails.application.routes.draw do
   devise_for :admins
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  namespace :api, constraints: {format: 'json'} do
+  namespace :api do
     namespace :v1 do
-      devise_for :students, path: 'students', controllers: { sessions: 'api/v1/sessions', registrations: 'api/v1/registrations' }
+      mount_devise_token_auth_for 'Student', at: 'students'
       resources :students, only: [:index, :show]
 
-      devise_for :instructors, controllers: { sessions: 'api/v1/sessions', registrations: 'api/v1/registrations' }
-      resources :instructors, only: [:index, :show, :create]
+      mount_devise_token_auth_for 'Instructor', at: 'instructors'
+      resources :instructors, only: [:index, :show]
 
-      devise_for :developers, controllers: { session: 'api/v1/sessions', registrations: 'api/v1/registrations' }
-      resources :developers, only: [:index, :show, :create]
+      mount_devise_token_auth_for 'Developer', at: 'developers'
+      resources :developers, only: [:index, :show]
 
-      devise_for :admins
+      mount_devise_token_auth_for 'Admin', at: 'admins'
+
+
+
+      resources :courses
     end
   end
 end

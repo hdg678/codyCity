@@ -4,7 +4,7 @@ class Developer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable, :lockable#,
-         #:jwt_authenticatable, jwt_revocation_strategy: JWTBlacklist
+         #jwt_authenticatable, jwt_revocation_strategy: JWTBlacklist
 
 
   belongs_to :organization

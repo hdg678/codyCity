@@ -1,4 +1,5 @@
 class Api::V1::StudentsController < Api::V1::APIController
+  include DeviseTokenAuth::Concerns::SetUserByToken
   skip_before_action :verify_authenticity_token, only: [:create]
 
   # GET

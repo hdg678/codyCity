@@ -7,6 +7,8 @@ class Student < ApplicationRecord
          :lockable#,
          #:jwt_authenticatable, jwt_revocation_strategy: JWTBlacklist
 
+  include DeviseTokenAuth::Concerns::User
+
   belongs_to :organization
   has_one :profile, as: :viewable
 
