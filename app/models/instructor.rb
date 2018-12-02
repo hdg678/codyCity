@@ -3,8 +3,7 @@ class Instructor < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable,
          :recoverable, :rememberable, :trackable, :validatable,
-         :confirmable, :lockable, :registerable#,
-         #:jwt_authenticatable, jwt_revocation_strategy: JWTBlacklist
+         :confirmable, :lockable, :registerable
          
 
   belongs_to :organization
