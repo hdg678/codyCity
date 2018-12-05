@@ -18,7 +18,7 @@ Rails.application.routes.draw do
 
       mount_devise_token_auth_for 'Admin', at: 'admins', controllers: { registrations: 'api/v1/registrations', sessions: 'api/v1/sessions' }
 
-
+      get 'tokens/generate', to: 'organization_user_tokens#generate'
 
       resources :courses
     end
