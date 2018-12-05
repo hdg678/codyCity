@@ -1,6 +1,6 @@
 class Api::V1::CoursesController < Api::V1::APIController
-  skip_before_action :verify_authenticity_token
   before_action :set_course, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_instructor!, only: [:create, :update, :destroy]
 
   # GET /api/v1/courses
   def index

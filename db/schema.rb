@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_02_221549) do
+ActiveRecord::Schema.define(version: 2018_12_03_182940) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,10 +36,14 @@ ActiveRecord::Schema.define(version: 2018_12_02_221549) do
     t.datetime "locked_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "provider"
+    t.string "uid"
+    t.text "tokens"
     t.index ["confirmation_token"], name: "index_admins_on_confirmation_token", unique: true
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["organization_id"], name: "index_admins_on_organization_id"
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+    t.index ["uid", "provider"], name: "index_admins_on_uid_and_provider", unique: true
     t.index ["unlock_token"], name: "index_admins_on_unlock_token", unique: true
   end
 
@@ -76,10 +80,14 @@ ActiveRecord::Schema.define(version: 2018_12_02_221549) do
     t.datetime "locked_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "provider"
+    t.string "uid"
+    t.text "tokens"
     t.index ["confirmation_token"], name: "index_developers_on_confirmation_token", unique: true
     t.index ["email"], name: "index_developers_on_email", unique: true
     t.index ["organization_id"], name: "index_developers_on_organization_id"
     t.index ["reset_password_token"], name: "index_developers_on_reset_password_token", unique: true
+    t.index ["uid", "provider"], name: "index_developers_on_uid_and_provider", unique: true
     t.index ["unlock_token"], name: "index_developers_on_unlock_token", unique: true
   end
 
@@ -115,10 +123,14 @@ ActiveRecord::Schema.define(version: 2018_12_02_221549) do
     t.datetime "locked_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "provider"
+    t.string "uid"
+    t.text "tokens"
     t.index ["confirmation_token"], name: "index_instructors_on_confirmation_token", unique: true
     t.index ["email"], name: "index_instructors_on_email", unique: true
     t.index ["organization_id"], name: "index_instructors_on_organization_id"
     t.index ["reset_password_token"], name: "index_instructors_on_reset_password_token", unique: true
+    t.index ["uid", "provider"], name: "index_instructors_on_uid_and_provider", unique: true
     t.index ["unlock_token"], name: "index_instructors_on_unlock_token", unique: true
   end
 

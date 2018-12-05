@@ -5,6 +5,7 @@ class Instructor < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable, :lockable, :registerable
          
+  include DeviseTokenAuth::Concerns::User
 
   belongs_to :organization
   has_one :profile, as: :viewable

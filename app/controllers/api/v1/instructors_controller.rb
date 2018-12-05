@@ -1,4 +1,6 @@
 class Api::V1::InstructorsController < Api::V1::APIController
+  include DeviseTokenAuth::Concerns::SetUserByToken
+
   # GET
 
   # GET /api/v1/instructors
@@ -17,7 +19,7 @@ class Api::V1::InstructorsController < Api::V1::APIController
     new_instructor(instructor_params).save
     render json: @instructor
   end
-    
+
 
   private
 
