@@ -1,8 +1,6 @@
 class Api::V1::InstructorsController < Api::V1::APIController
   include DeviseTokenAuth::Concerns::SetUserByToken
 
-  # GET
-
   # GET /api/v1/instructors
   def index
     @instructors = Instructor.all
@@ -13,13 +11,6 @@ class Api::V1::InstructorsController < Api::V1::APIController
   def show
     render json: instructor
   end
-
-  # POST /api/v1/instructors
-  def create
-    new_instructor(instructor_params).save
-    render json: @instructor
-  end
-
 
   private
 

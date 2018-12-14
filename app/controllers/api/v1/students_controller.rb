@@ -14,20 +14,6 @@ class Api::V1::StudentsController < Api::V1::APIController
     render json: student
   end
 
-  # POST /api/v1/students
-  def create
-    new_student(student_params).save
-    render json: @student
-  end
-
-  # PATCH/PUT /api/v1/students/1
-  def update
-  end
-
-  # DELETE /api/v1/students/1
-  def destroy
-  end
-
   private
 
   def student_params

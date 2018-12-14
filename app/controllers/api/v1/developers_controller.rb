@@ -1,8 +1,6 @@
 class Api::V1::DevelopersController < Api::V1::APIController
   include DeviseTokenAuth::Concerns::SetUserByToken
 
-  # GET
-
   # GET /api/v1/developers
   def index
     @developers = Developer.all
@@ -12,12 +10,6 @@ class Api::V1::DevelopersController < Api::V1::APIController
   # GET /api/v1/developers/1
   def show
     render json: developer
-  end
-
-  # POST /api/v1/developers
-  def create
-    new_developer(params).save
-    render json: @developer
   end
 
   private
