@@ -20,7 +20,12 @@ Rails.application.routes.draw do
 
       get 'tokens/generate', to: 'organization_user_tokens#generate'
 
-      resources :courses
+      resources :courses do
+        resources :lessons do
+          resources :exercises, only: [:index, :show]
+          post 'exercises/push', to: 'exercises#push'
+        end
+      end
     end
   end
 end
