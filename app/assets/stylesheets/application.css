@@ -13,3 +13,53 @@
  *= require_tree .
  *= require_self
  */
+
+/* HEADER */
+
+.header {
+  background-color: white;
+  color: black;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.header-item {
+  display: inline-block;
+}
+
+.header a {
+  text-decoration: none;
+  color: black;
+}
+
+.header a:hover {
+  background-color: white;
+  text-decoration: underline;
+}
+
+.header-title {
+  color: #000000;
+}
+
+.nav-right {
+  float: right;
+}
+
+.nav-right a {
+  text-decoration: none;
+  color: #CDCDCD;
+  padding: 10px;
+}
+
+.nav-right a:hover {
+  background-color: white;
+  color: #CDCDCD;
+  text-decoration: underline;
+}
+
+.share-icon img {
+  width: 20px;
+  height: 20px;
+}
+
+/* FOOTER */
