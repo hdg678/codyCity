@@ -1,0 +1,40 @@
+<div class="jumbotron">
+  <h1>Create an Account</h1>
+  <div class="user-type-selector">
+    <div class="user-type user-type-selected">
+      <h3>Professor</h3>
+    </div>
+    <div class="user-type">
+      <h3>Student</h3>
+    </div>
+  </div>
+  <div class="jumbotron-form">
+    <%= form_tag session_path(:student) do |f| %>
+      <div class="jumbotron-form-group">
+        <p class="jumbotron-form-label"><span>First Name</span></p>
+        <div class="jumbotron-form-input"><%= text_field_tag :first_name %></div>
+      </div>
+      <div class="jumbotron-form-group">
+        <p class="jumbotron-form-label"><span>Last Name</span></p>
+        <div class="jumbotron-form-input"><%= text_field_tag :last_name %></div>
+      </div>
+      <div class="jumbotron-form-group">
+        <p class="jumbotron-form-label"><span>Email</span></p>
+        <div class="jumbotron-form-input"><%= text_field_tag :email %></div>
+      </div>
+      <div class="jumbotron-form-group">
+        <p class="jumbotron-form-label"><span>Token</span></p>
+        <div class="jumbotron-form-input"><%= text_field_tag :token %></div>
+      </div>
+      <div class="jumbotron-form-group">
+        <p class="jumbotron-form-label"><span>Username</span></p>
+        <div class="jumbotron-form-input"><%= text_field_tag :username %></div>
+      </div>
+      <div class="jumbotron-form-group">
+        <p class="jumbotron-form-label"><span>Password</span></p>
+        <div class="jumbotron-form-input"><%= password_field_tag :password %></div>
+      </div>
+    <% end %>
+  </div>
+  <%= link_to 'Sign Up', '#', class: 'button' %>
+</div>
