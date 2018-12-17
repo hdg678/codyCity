@@ -14,6 +14,13 @@
  *= require_self
  */
 
+body {
+  margin: 10px;
+  padding: 10px;
+  margin-left: 0px;
+  padding-left: 0px;
+}
+
 /* HEADER */
 
 .header {
@@ -60,6 +67,43 @@
 .share-icon img {
   width: 20px;
   height: 20px;
+}
+
+/* SIDEBAR */
+
+.sidebar-container {
+  width: 75px;
+  background-color: #0896BB;
+  color: #FFFFFF;
+  margin-left: 0px;
+  padding-left: 0px;
+  height: 100%;
+  position: fixed;
+}
+
+.sidebar {
+  width: 90%;
+  margin: auto;
+  background-color: #0896BB;
+}
+
+.sidebar-icon {
+  text-align: center;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.sidebar-icon-selected {
+  background-color: #FFFFFF;
+  color: #0896BB;
+}
+
+.sidebar-icon img {
+  width: 50%;
+}
+
+.sidebar-icon p {
+  margin: 0px;
 }
 
 /* FOOTER */
