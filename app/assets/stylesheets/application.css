@@ -106,4 +106,111 @@ body {
   margin: 0px;
 }
 
+/* CONTENT */
+
+.content {
+  padding: 10px;
+}
+
+.content-with-sidebar {
+  margin-left: 75px;
+}
+
+.jumbotron {
+  width: 50%;
+  margin: auto;
+  background-color: #E6E6E6;
+  border-radius: 10px;
+  padding: 30px;
+  text-align: center;
+  color: #0896BB;
+}
+
+.user-type-selector {
+  margin: 0px;
+  text-align: left;
+  height: 30px;
+}
+
+.user-type {
+  display: inline-block;
+  height: 20px;
+  padding: 5px;
+}
+
+.user-type-selected {
+  background-color: #0896BB;
+  color: white;
+  border-radius: 5px 5px 0px 0px;
+}
+
+.user-type h3 {
+  margin: 0px;
+}
+
+.jumbotron-form {
+  background-color: #0896BB;
+  padding: 10px;
+  margin-bottom: 30px;
+  border-radius: 0px 5px 5px 5px;
+}
+
+.jumbotron-form-group {
+  background-color: white;
+  border-radius: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  height: 30px;
+  overflow: hidden;
+}
+
+.jumbotron-form-label {
+  display: inline-block;
+  margin: 0px;
+  height: 28px;
+  float: left;
+  padding-left: 10px;
+  padding-right: 10px;
+  text-align: center;
+  border-radius: 5px;
+  border-style: solid;
+  border-color: #EEEEEE;
+  border-width: 1px;
+}
+
+.jumbotron-form-label span {
+  vertical-align: middle;
+}
+
+.jumbotron-form-input {
+  overflow: hidden;
+  height: 100%;
+  background-color: blue;
+}
+
+.jumbotron-form-group input {
+  height: 100%;
+  width: 100%;
+  border-width: 0px;
+  padding: 0px;
+  padding-left: 10px;
+  font-size: 20px;
+}
+
+.button, .button:visited {
+  display: block;
+  text-decoration: none;
+  width: 90%;
+  background-color: #0896BB;
+  color: #FFFFFF;
+  margin-left: 5%;
+  margin-right: 5%;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.button:hover {
+  color: black;
+}
+
 /* FOOTER */

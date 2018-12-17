@@ -11,7 +11,9 @@
   <body>
     <%= render 'layouts/header' %>
     <%= render 'layouts/sidebar' %>
-    <%= yield %>
+    <div class="content content-with-sidebar">
+      <%= yield %>
+    </div>
     <%= render 'layouts/footer' %>
   </body>
 </html>
