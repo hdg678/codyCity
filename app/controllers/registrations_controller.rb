@@ -10,6 +10,7 @@ class RegistrationsController < Devise::RegistrationsController
 
   def create
     build_resource(sign_up_params.merge({ email: @ost.email }))
+    resource.provider = :email
     resource.organization_id = @ost.organization_id
     resource.save
     if resource.persisted?

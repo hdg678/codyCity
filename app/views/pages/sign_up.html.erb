@@ -1,15 +1,64 @@
+<script>
+$(document).ready(function() {
+  var user_types = ['instructor', 'student'];
+
+  function deselect_all() {
+    $(".user-type").removeClass("user-type-selected");
+  }
+
+  function set_form(user) {
+    $('#registration-form').attr("action", "/" + user + "s");
+    $('#email_input').attr("name", user + "[email]");
+    $('#password_input').attr("name", user + "[password]");
+  }
+
+  function set_style(user) {
+    index = user_types.indexOf(user);
+    if (index == 0) {
+      $('#session-inputs').addClass("jumbotron-form-sharp-top-left");
+      console.log("a");
+    } else {
+      $('#session-inputs').removeClass("jumbotron-form-sharp-top-left");
+    }
+  }
+
+  function select_professor() {
+    deselect_all();
+    $("#professor-selector").addClass("user-type-selected");
+    set_form("instructor");
+    set_style("instructor");
+  }
+
+  function select_student() {
+    deselect_all();
+    $("#student-selector").addClass("user-type-selected");
+    set_form("student");
+    set_style("student");
+  }
+
+  $("#professor-selector").click(function() {
+    select_professor();
+  });
+
+  $("#student-selector").click(function() {
+    select_student();
+  });
+
+  select_professor();
+});
+</script>
 <div class="jumbotron">
   <h1>Create an Account</h1>
   <div class="user-type-selector">
-    <div class="user-type user-type-selected">
+    <div class="user-type" id="professor-selector">
       <h3>Professor</h3>
     </div>
-    <div class="user-type">
+    <div class="user-type" id="student-selector">
       <h3>Student</h3>
     </div>
   </div>
-  <div class="jumbotron-form">
-    <%= form_tag session_path(:student) do |f| %>
+  <%= form_tag registration_path(:instructor), id: 'registration-form' do |f| %>
+    <div class="jumbotron-form" id="session-inputs">
       <div class="jumbotron-form-group">
         <p class="jumbotron-form-label"><span>First Name</span></p>
         <div class="jumbotron-form-input"><%= text_field_tag :first_name %></div>
@@ -20,7 +69,7 @@
       </div>
       <div class="jumbotron-form-group">
         <p class="jumbotron-form-label"><span>Email</span></p>
-        <div class="jumbotron-form-input"><%= text_field_tag :email %></div>
+        <div class="jumbotron-form-input"><%= text_field_tag 'instructor[email]' %></div>
       </div>
       <div class="jumbotron-form-group">
         <p class="jumbotron-form-label"><span>Token</span></p>
@@ -32,9 +81,9 @@
       </div>
       <div class="jumbotron-form-group">
         <p class="jumbotron-form-label"><span>Password</span></p>
-        <div class="jumbotron-form-input"><%= password_field_tag :password %></div>
+        <div class="jumbotron-form-input"><%= password_field_tag 'instructor[password]' %></div>
       </div>
-    <% end %>
-  </div>
-  <%= link_to 'Sign Up', '#', class: 'button' %>
+    </div>
+    <%= submit_tag 'Sign Up', class: 'button' %>
+  <% end %>
 </div>
