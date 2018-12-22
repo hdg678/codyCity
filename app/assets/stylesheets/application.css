@@ -116,6 +116,8 @@ body {
   margin-left: 75px;
 }
 
+/* JUMBOTRON */
+
 .jumbotron {
   width: 50%;
   margin: auto;
@@ -218,4 +220,30 @@ body {
   color: black;
 }
 
-/* FOOTER */
+/* OTHER */
+
+hr {
+  color: #0896BB;
+  background-color: #0896BB;
+  height: 1px;
+  border: none;
+}
+
+.heading {
+  color: #0896BB;
+}
+
+.expand-button {
+  color: #0896BB;
+  background-color: white;
+  font-size: 18px;
+  text-decoration: none;
+  border: none;
+}
+
+.exercise-listing {
+  background-color: #f4f4f4;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 5px;
+}
