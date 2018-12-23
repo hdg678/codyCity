@@ -1,16 +1,22 @@
 <div class="sidebar-container">
   <div class="sidebar">
-    <div class="sidebar-icon">
-      <%= image_tag 'home-240.png' %>
-      <p>Home</p>
-    </div>
-    <div class="sidebar-icon sidebar-icon-selected">
-      <%= image_tag 'lessons-240.png' %>
-      <p>Lessons</p>
-    </div>
-    <div class="sidebar-icon">
-      <%= image_tag 'grades-240.png' %>
-      <p>Grades</p>
-    </div>
+    <%= link_to root_path do %>
+      <div class="sidebar-icon <%= 'sidebar-icon-selected' if current_page?(root_path) %>">
+        <%= image_tag 'home-240.png' %>
+        <p>Home</p>
+      </div>
+    <% end %>
+    <%= link_to root_path do %>
+      <div class="sidebar-icon <%= 'sidebar-icon-selected' if params[:controller] == 'lessons' %>">
+        <%= image_tag 'lessons-240.png' %>
+        <p>Lessons</p>
+      </div>
+    <% end %>
+    <%= link_to root_path do %>
+      <div class="sidebar-icon <%= 'sidebar-icon-selected' if params[:controller] == 'exercises' %>">
+        <%= image_tag 'grades-240.png' %>
+        <p>Grades</p>
+      </div>
+    <% end %>
   </div>
 </div>

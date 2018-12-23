@@ -10,9 +10,9 @@ Rails.application.routes.draw do
   get '/sign_in', to: 'pages#sign_in'
   get '/sign_up', to: 'pages#sign_up'
 
-  resources :courses do
-    resources :lessons
-  end
+  resources :courses
+  resources :lessons
+  resources :exercises
 
   namespace :api do
     namespace :v1 do

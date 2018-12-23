@@ -91,6 +91,8 @@ body {
   text-align: center;
   padding-top: 15px;
   padding-bottom: 15px;
+  color: #FFFFFF;
+  text-decoration: none;
 }
 
 .sidebar-icon-selected {
@@ -128,25 +130,25 @@ body {
   color: #0896BB;
 }
 
-.user-type-selector {
+.horizontal-selector {
   margin: 0px;
   text-align: left;
   height: 30px;
 }
 
-.user-type {
+.selector-option {
   display: inline-block;
   height: 20px;
   padding: 5px;
 }
 
-.user-type-selected {
+.selector-option-selected {
   background-color: #0896BB;
   color: white;
   border-radius: 5px 5px 0px 0px;
 }
 
-.user-type h3 {
+.selector-option h3 {
   margin: 0px;
 }
 

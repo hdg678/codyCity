@@ -3,7 +3,7 @@ $(document).ready(function() {
   var user_types = ['instructor', 'student'];
 
   function deselect_all() {
-    $(".user-type").removeClass("user-type-selected");
+    $(".selector-option").removeClass("selector-option-selected");
   }
 
   function set_form(user) {
@@ -16,7 +16,6 @@ $(document).ready(function() {
     index = user_types.indexOf(user);
     if (index == 0) {
       $('#session-inputs').addClass("jumbotron-form-sharp-top-left");
-      console.log("a");
     } else {
       $('#session-inputs').removeClass("jumbotron-form-sharp-top-left");
     }
@@ -24,14 +23,14 @@ $(document).ready(function() {
 
   function select_professor() {
     deselect_all();
-    $("#professor-selector").addClass("user-type-selected");
+    $("#professor-selector").addClass("selector-option-selected");
     set_form("instructor");
     set_style("instructor");
   }
 
   function select_student() {
     deselect_all();
-    $("#student-selector").addClass("user-type-selected");
+    $("#student-selector").addClass("selector-option-selected");
     set_form("student");
     set_style("student");
   }
@@ -49,11 +48,11 @@ $(document).ready(function() {
 </script>
 <div class="jumbotron">
   <h1>Create an Account</h1>
-  <div class="user-type-selector">
-    <div class="user-type" id="professor-selector">
+  <div class="horizontal-selector">
+    <div class="selector-option" id="professor-selector">
       <h3>Professor</h3>
     </div>
-    <div class="user-type" id="student-selector">
+    <div class="selector-option" id="student-selector">
       <h3>Student</h3>
     </div>
   </div>

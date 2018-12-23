@@ -1,59 +1,30 @@
 <script>
 $(document).ready(function() {
-  var user_types = ['instructor', 'student'];
-
-  function deselect_all() {
-    $(".user-type").removeClass("user-type-selected");
-  }
-
-  function set_form(user) {
-    $('#session-form').attr("action", "/" + user + "s/sign_in");
-    $('#email_input').attr("name", user + "[email]");
-    $('#password_input').attr("name", user + "[password]");
-  }
-
-  function set_style(user) {
-    index = user_types.indexOf(user);
-    if (index == 0) {
-      $('#session-inputs').addClass("jumbotron-form-sharp-top-left");
-      console.log("a");
+  function selectHandler(element) {
+    attribute = element.attribute;
+    $("#session-form").attr("action", "/" + attribute + "s/sign_in");
+    $("#email_input").attr("name", attribute + "[email]");
+    $("#password_input").attr("name", attribute + "[password]");
+    if ($("#" + element.id).index() == 0) {
+      $("#session-inputs").addClass("jumbotron-form-sharp-top-left");
     } else {
-      $('#session-inputs').removeClass("jumbotron-form-sharp-top-left");
+      $("#session-inputs").removeClass("jumbotron-form-sharp-top-left");
     }
   }
 
-  function select_professor() {
-    deselect_all();
-    $("#professor-selector").addClass("user-type-selected");
-    set_form("instructor");
-    set_style("instructor");
-  }
-
-  function select_student() {
-    deselect_all();
-    $("#student-selector").addClass("user-type-selected");
-    set_form("student");
-    set_style("student");
-  }
-
-  $("#professor-selector").click(function() {
-    select_professor();
-  });
-
-  $("#student-selector").click(function() {
-    select_student();
-  });
-
-  select_professor();
+  selectorFor(selectHandler,
+    [{id: 'professor-selector', attribute: 'instructor'},
+    {id: 'student-selector', attribute: 'student'}]
+  );
 });
 </script>
 <div class="jumbotron">
   <h1>Sign In</h1>
-  <div class="user-type-selector">
-    <div class="user-type" id="professor-selector">
+  <div class="horizontal-selector">
+    <div class="selector-option" id="professor-selector">
       <h3>Professor</h3>
     </div>
-    <div class="user-type" id="student-selector">
+    <div class="selector-option" id="student-selector">
       <h3>Student</h3>
     </div>
   </div>

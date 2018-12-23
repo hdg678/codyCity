@@ -1,19 +1,20 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @lesson.title %>
-</p>
+<h1 class="heading"><%= @lesson.title %></h1>
 
-<p>
-  <strong>Course:</strong>
-  <%= @lesson.course %>
-</p>
-
-<p>
-  <strong>Value for order:</strong>
-  <%= @lesson.value_for_order %>
-</p>
-
-<%= link_to 'Edit', edit_lesson_path(@lesson) %> |
-<%= link_to 'Back', lessons_path %>
+<div class="jumbotron jumbotron-light">
+  <div class="horizontal-selector">
+    <div class="selector-option">
+      <h3>Slides<h3>
+    </div>
+    <div class="selector-option">
+      <h3>Video<h3>
+    </div>
+    <div class="selector-option">
+      <h3>Source<h3>
+    </div>
+    <div class="selector-option">
+      <h3>Challenges<h3>
+    </div>
+  </div>
+</div>

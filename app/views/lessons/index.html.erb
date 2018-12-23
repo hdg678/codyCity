@@ -27,7 +27,7 @@ $(document).ready(function() {
 <% @lessons.each do |lesson| %>
   <div class="lesson-container" data-lessonid="<%= lesson.id %>">
     <button class="expand-button" data-lessonid="<%= lesson.id %>">+</button>
-    <span><%= lesson.title %></span>
+    <%= link_to lesson.title, lesson %>
     <div class="exercises">
       <% lesson.exercises.each do |exercise| %>
         <div class="exercise-listing">
