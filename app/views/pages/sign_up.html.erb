@@ -1,49 +1,14 @@
 <script>
 $(document).ready(function() {
-  var user_types = ['instructor', 'student'];
-
-  function deselect_all() {
-    $(".selector-option").removeClass("selector-option-selected");
-  }
-
-  function set_form(user) {
-    $('#registration-form').attr("action", "/" + user + "s");
-    $('#email_input').attr("name", user + "[email]");
-    $('#password_input').attr("name", user + "[password]");
-  }
-
-  function set_style(user) {
-    index = user_types.indexOf(user);
-    if (index == 0) {
-      $('#session-inputs').addClass("jumbotron-form-sharp-top-left");
-    } else {
-      $('#session-inputs').removeClass("jumbotron-form-sharp-top-left");
-    }
-  }
-
-  function select_professor() {
-    deselect_all();
-    $("#professor-selector").addClass("selector-option-selected");
-    set_form("instructor");
-    set_style("instructor");
-  }
-
-  function select_student() {
-    deselect_all();
-    $("#student-selector").addClass("selector-option-selected");
-    set_form("student");
-    set_style("student");
-  }
-
-  $("#professor-selector").click(function() {
-    select_professor();
+  horizontalSelector([
+    {id: "professor-selector", attribute: "instructor", form: { action: "/instructors/sign_up" }},
+    {id: "student-selector", attribute: "student", form: { action: "/students/sign_up" }}
+  ], {
+    form_inputs: [{ id: "email_input", name: "email" }, { id: "password_input", name: "password" }],
+    form_element: $("#registration-form"),
+    bottom_element: $("#session-inputs"),
+    first_selected: "jumbotron-form-sharp-top-left"
   });
-
-  $("#student-selector").click(function() {
-    select_student();
-  });
-
-  select_professor();
 });
 </script>
 <div class="jumbotron">
@@ -68,7 +33,7 @@ $(document).ready(function() {
       </div>
       <div class="jumbotron-form-group">
         <p class="jumbotron-form-label"><span>Email</span></p>
-        <div class="jumbotron-form-input"><%= text_field_tag 'instructor[email]' %></div>
+        <div class="jumbotron-form-input"><%= text_field_tag 'instructor[email]', nil, id: 'email_input' %></div>
       </div>
       <div class="jumbotron-form-group">
         <p class="jumbotron-form-label"><span>Token</span></p>
@@ -80,7 +45,7 @@ $(document).ready(function() {
       </div>
       <div class="jumbotron-form-group">
         <p class="jumbotron-form-label"><span>Password</span></p>
-        <div class="jumbotron-form-input"><%= password_field_tag 'instructor[password]' %></div>
+        <div class="jumbotron-form-input"><%= password_field_tag 'instructor[password]', nil, id: 'password_input' %></div>
       </div>
     </div>
     <%= submit_tag 'Sign Up', class: 'button' %>

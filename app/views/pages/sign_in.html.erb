@@ -1,21 +1,14 @@
 <script>
 $(document).ready(function() {
-  function selectHandler(element) {
-    attribute = element.attribute;
-    $("#session-form").attr("action", "/" + attribute + "s/sign_in");
-    $("#email_input").attr("name", attribute + "[email]");
-    $("#password_input").attr("name", attribute + "[password]");
-    if ($("#" + element.id).index() == 0) {
-      $("#session-inputs").addClass("jumbotron-form-sharp-top-left");
-    } else {
-      $("#session-inputs").removeClass("jumbotron-form-sharp-top-left");
-    }
-  }
-
-  selectorFor(selectHandler,
-    [{id: 'professor-selector', attribute: 'instructor'},
-    {id: 'student-selector', attribute: 'student'}]
-  );
+  horizontalSelector([
+    {id: "professor-selector", attribute: "instructor", form: { action: "/instructors/sign_in" }},
+    {id: "student-selector", attribute: "student", form: { action: "/students/sign_in" }}
+  ], {
+    form_inputs: [{ id: "email_input", name: "email" }, { id: "password_input", name: "password" }],
+    form_element: $("#session-form"),
+    bottom_element: $("#session-inputs"),
+    first_selected: "jumbotron-form-sharp-top-left"
+  });
 });
 </script>
 <div class="jumbotron">

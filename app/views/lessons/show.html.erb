@@ -1,20 +1,45 @@
+<script>
+$(document).ready(function() {
+  horizontalSelectorShowHide([
+    { id: "slides-selector", element: "#slides-display" },
+    { id: "video-selector", element: "#video-display" },
+    { id: "source-selector", element: "#source-display" },
+    { id: "challenges-selector", element: "#challenges-display" }
+  ], {
+    bottom_element: $("#display"),
+    first_selected: "blue-border-sharp-top-left"
+  });
+});
+</script>
 <p id="notice"><%= notice %></p>
 
 <h1 class="heading"><%= @lesson.title %></h1>
 
-<div class="jumbotron jumbotron-light">
-  <div class="horizontal-selector">
-    <div class="selector-option">
-      <h3>Slides<h3>
-    </div>
-    <div class="selector-option">
-      <h3>Video<h3>
-    </div>
-    <div class="selector-option">
-      <h3>Source<h3>
-    </div>
-    <div class="selector-option">
-      <h3>Challenges<h3>
-    </div>
+<div class="horizontal-selector horizontal-selector-light">
+  <div class="selector-option selector-option-light" id="slides-selector">
+    <h3>Slides<h3>
+  </div>
+  <div class="selector-option selector-option-light" id="video-selector">
+    <h3>Video<h3>
+  </div>
+  <div class="selector-option selector-option-light" id="source-selector">
+    <h3>Source<h3>
+  </div>
+  <div class="selector-option selector-option-light" id="challenges-selector">
+    <h3>Challenges<h3>
+  </div>
+</div>
+<div class="lesson-display blue-border" id="display">
+  <div id="slides-display">
+    Slides
+  </div>
+  <div id="video-display">
+    Video
+  </div>
+  <div id="source-display">
+    Source
+  </div>
+  <div id="challenges-display">
+    Challenges
   </div>
 </div>

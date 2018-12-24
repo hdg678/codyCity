@@ -249,3 +249,37 @@ hr {
   padding: 10px;
   border-radius: 5px;
 }
+
+.selector-option-light {
+  background-color: #FFFFFF;
+  color: #0896BB;
+  padding: 5px;
+  z-index: 0;
+  position: relative;
+
+  border-radius: 5px 5px 0px 0px;
+  border-style: solid;
+  border-bottom-style: none;
+  border-width: 1px;
+  border-color: #FFFFFF;
+}
+
+.selector-option-light.selector-option-selected {
+  position: relative;
+  border-color: #0896BB;
+  z-index: 2;
+}
+
+.blue-border {
+  position: relative;
+  border-radius: 5px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #0896BB;
+  padding: 5px;
+  z-index: 1;
+}
+
+.blue-border-sharp-top-left {
+  border-radius: 0px 5px 5px 5px;
+}
