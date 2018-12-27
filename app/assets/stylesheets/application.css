@@ -283,3 +283,15 @@ hr {
 .blue-border-sharp-top-left {
   border-radius: 0px 5px 5px 5px;
 }
+
+.full-table {
+  width: 100%;
+  text-align: left;
+  border-collapse: collapse;
+}
+
+.table-header th {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-color: #0896BB;
+}
