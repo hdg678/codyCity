@@ -23,7 +23,7 @@ function selectorFor(handler, options) {
 
 function horizontalSelector(options, params) {
   handler = function(option) {
-    params.form_element.attr("action", option.action);
+    params.form_element.attr("action", option.form.action);
     for (var i = 0; i < params.form_inputs.length; ++i) {
       input = params.form_inputs[i];
       $("#" + input.id).attr("name", option.attribute + "[" + input.name + "]");

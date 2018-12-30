@@ -2,6 +2,7 @@
   <span class="logo header-item"></span>
   <h1 class="header-item header-title"><%= link_to 'Code City', '#' %></h1>
   <span class="nav-right header-item">
+    <%= link_to 'Log Out', destroy_student_session_path, method: :delete %>
     <%= link_to 'Speakers', '#' %>
     <%= link_to 'Bootcamps', '#' %>
     <%= link_to 'Start Up Team', '#' %>

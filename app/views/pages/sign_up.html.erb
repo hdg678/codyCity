@@ -1,8 +1,8 @@
 <script>
 $(document).ready(function() {
   horizontalSelector([
-    {id: "professor-selector", attribute: "instructor", form: { action: "/instructors/sign_up" }},
-    {id: "student-selector", attribute: "student", form: { action: "/students/sign_up" }}
+    {id: "professor-selector", attribute: "instructor", form: { action: "/instructors" }},
+    {id: "student-selector", attribute: "student", form: { action: "/students" }}
   ], {
     form_inputs: [{ id: "email_input", name: "email" }, { id: "password_input", name: "password" }],
     form_element: $("#registration-form"),
