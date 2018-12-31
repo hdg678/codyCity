@@ -145,6 +145,35 @@ body {
   margin-top: 60px;
 }
 
+.card-3 {
+  margin-left: 20px;
+  margin-right: 20px;
+  box-sizing: border-box;
+  width: 30%;
+  display: inline-block;
+  margin-bottom: 40px;
+  border-radius: 0px 0px 5px 5px;
+  border-color: #0896BB;
+  border-width: 2px;
+  border-style: solid;
+  height: 200px;
+}
+
+.card-3 .card-image {
+  background-color: #E6E6E6; /* PLACEHOLDER */
+  width: 100%;
+  height: 150px;
+}
+
+.card-3 .card-title {
+  margin: 0px;
+  padding-left: 20px;
+  height: 50px;
+  font-size: 30px;
+  line-height: 50px;
+  color: #0896BB;
+}
+
 /* JUMBOTRON */
 
 .jumbotron {
