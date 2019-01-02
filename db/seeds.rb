@@ -1,4 +1,5 @@
-o1 = Organization.create! name: 'organization-1'
+o1 = Organization.create name: 'organization-1'
+o1.save
 
 1.upto(5) do |i|
   s = Student.new email: "student-#{i}@example.com", password: "student-#{i}@example.com", provider: "email", organization: o1
