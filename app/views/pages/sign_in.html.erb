@@ -1,0 +1,37 @@
+<script>
+$(document).ready(function() {
+  horizontalSelector([
+    {id: "professor-selector", attribute: "instructor", form: { action: "/instructors/sign_in" }},
+    {id: "student-selector", attribute: "student", form: { action: "/students/sign_in" }}
+  ], {
+    form_inputs: [{ id: "email_input", name: "email" }, { id: "password_input", name: "password" }],
+    form_element: $("#session-form"),
+    bottom_element: $("#session-inputs"),
+    first_selected: "jumbotron-form-sharp-top-left"
+  });
+});
+</script>
+<div class="jumbotron">
+  <h1>Sign In</h1>
+  <div class="horizontal-selector">
+    <div class="selector-option" id="professor-selector">
+      <h3>Professor</h3>
+    </div>
+    <div class="selector-option" id="student-selector">
+      <h3>Student</h3>
+    </div>
+  </div>
+  <%= form_tag session_path(:instructor), id: 'session-form' do |f| %>
+    <div class="jumbotron-form" id="session-inputs">
+      <div class="jumbotron-form-group">
+        <p class="jumbotron-form-label"><span>Email<span></p>
+        <div class="jumbotron-form-input"><%= text_field_tag 'instructor[email]', nil, id: 'email_input' %></div>
+      </div>
+      <div class="jumbotron-form-group">
+        <p class="jumbotron-form-label"><span>Password<span></p>
+        <div class="jumbotron-form-input"><%= password_field_tag 'instructor[password]', nil, id: 'password_input' %></div>
+      </div>
+    </div>
+    <%= submit_tag 'Sign In', class: 'button' %>
+  <% end %>
+</div>

@@ -4,7 +4,12 @@ class LessonsController < ApplicationController
   # GET /lessons
   # GET /lessons.json
   def index
-    @lessons = Lesson.all
+    if params.include? :course_id
+      @course = Course.find(params[:course_id])
+      @lessons = @course.lessons
+    else
+      @lessons = Lesson.all
+    end
   end
 
   # GET /lessons/1
