@@ -5,6 +5,8 @@ class Admin < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable, :lockable
 
-   belongs_to :organization
+  include DeviseTokenAuth::Concerns::User
+
+  belongs_to :organization
   
 end

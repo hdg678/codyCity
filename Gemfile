@@ -40,6 +40,7 @@ gem 'rubyzip'
 gem 'zip-zip'
 
 gem 'devise'
+gem 'devise_token_auth'
 
 # Used for github integration Read more: https://github.com/octokit/octokit.rb
 gem "dotenv-rails"
