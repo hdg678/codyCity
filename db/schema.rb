@@ -134,6 +134,13 @@ ActiveRecord::Schema.define(version: 2018_12_03_182940) do
     t.index ["unlock_token"], name: "index_instructors_on_unlock_token", unique: true
   end
 
+  create_table "jwt_blacklists", force: :cascade do |t|
+    t.string "jti", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["jti"], name: "index_jwt_blacklists_on_jti"
+  end
+
   create_table "lessons", id: :serial, force: :cascade do |t|
     t.integer "course_id"
     t.string "title"
