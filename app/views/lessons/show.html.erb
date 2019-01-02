@@ -1,45 +1,19 @@
-<script>
-$(document).ready(function() {
-  horizontalSelectorShowHide([
-    { id: "slides-selector", element: "#slides-display" },
-    { id: "video-selector", element: "#video-display" },
-    { id: "source-selector", element: "#source-display" },
-    { id: "challenges-selector", element: "#challenges-display" }
-  ], {
-    bottom_element: $("#display"),
-    first_selected: "blue-border-sharp-top-left"
-  });
-});
-</script>
 <p id="notice"><%= notice %></p>
 
-<h1 class="heading"><%= @lesson.title %></h1>
+<p>
+  <strong>Title:</strong>
+  <%= @lesson.title %>
+</p>
 
-<div class="horizontal-selector horizontal-selector-light">
-  <div class="selector-option selector-option-light" id="slides-selector">
-    <h3>Slides<h3>
-  </div>
-  <div class="selector-option selector-option-light" id="video-selector">
-    <h3>Video<h3>
-  </div>
-  <div class="selector-option selector-option-light" id="source-selector">
-    <h3>Source<h3>
-  </div>
-  <div class="selector-option selector-option-light" id="challenges-selector">
-    <h3>Challenges<h3>
-  </div>
-</div>
-<div class="lesson-display blue-border" id="display">
-  <div id="slides-display">
-    Slides
-  </div>
-  <div id="video-display">
-    Video
-  </div>
-  <div id="source-display">
-    Source
-  </div>
-  <div id="challenges-display">
-    Challenges
-  </div>
-</div>
+<p>
+  <strong>Course:</strong>
+  <%= @lesson.course %>
+</p>
+
+<p>
+  <strong>Value for order:</strong>
+  <%= @lesson.value_for_order %>
+</p>
+
+<%= link_to 'Edit', edit_lesson_path(@lesson) %> |
+<%= link_to 'Back', lessons_path %>

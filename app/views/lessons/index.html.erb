@@ -1,39 +1,31 @@
-<script>
-$(document).ready(function() {
-  // Start off hiding all exercises
-  lessons = $(".lesson-container");
-  for (var i = 0; i < lessons.length; ++i) {
-    $(lessons[i]).find(".exercises").hide();
-  }
-
-  $(".expand-button").click(function(event) {
-    button = $(event.currentTarget);
-    if (button.html() == "-") {
-      button.html("+");
-    } else if (button.html() == "+") {
-      button.html("-");
-    }
-    exerciseContainer = $(event.currentTarget).parent().find(".exercises");
-    exerciseContainer.toggle();
-  });
-});
-</script>
 <p id="notice"><%= notice %></p>
 
+<h1>Lessons</h1>
 
-<hr />
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Course</th>
+      <th>Value for order</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
 
-<% @lessons.each do |lesson| %>
-  <div class="lesson-container" data-lessonid="<%= lesson.id %>">
-    <button class="expand-button" data-lessonid="<%= lesson.id %>">+</button>
-    <%= link_to lesson.title, lesson %>
-    <div class="exercises">
-      <% lesson.exercises.each do |exercise| %>
-        <div class="exercise-listing">
-          <%= exercise.title %>
-        </div>
-      <% end %>
-    </div>
-    <hr />
-  </div>
-<% end %>
+  <tbody>
+    <% @lessons.each do |lesson| %>
+      <tr>
+        <td><%= lesson.title %></td>
+        <td><%= lesson.course %></td>
+        <td><%= lesson.value_for_order %></td>
+        <td><%= link_to 'Show', lesson %></td>
+        <td><%= link_to 'Edit', edit_lesson_path(lesson) %></td>
+        <td><%= link_to 'Destroy', lesson, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Lesson', new_lesson_path %>
