@@ -1,5 +1,24 @@
 <p id="notice"><%= notice %></p>
 
+<% if instructor_signed_in? %>
+
+  <h1 class="heading">Welcome, Professor.</h1>
+
+  <% Course.all.in_groups_of 3, false do |group| %>
+    <!-- Horizontal Line -->
+    <% group.each do |course| %>
+      <!-- Card -->
+      <div class="card-3">
+        <div class="card-image">
+        </div>
+        <p class="card-title"><%= link_to course.title, course_path(course) %></p>
+      </div>
+    <% end %>
+    <br />
+  <% end %>
+
+<% else %>
+
 <h1>Courses</h1>
 
 <table>
@@ -25,3 +44,5 @@
 <br>
 
 <%= link_to 'New Course', new_course_path %>
+
+<% end %>

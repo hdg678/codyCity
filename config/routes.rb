@@ -7,6 +7,15 @@ Rails.application.routes.draw do
   resources :courses
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
+  root 'pages#root'
+
+  get '/sign_in', to: 'pages#sign_in'
+  get '/sign_up', to: 'pages#sign_up'
+
+  resources :courses
+  resources :lessons
+  resources :exercises
+
   namespace :api do
     namespace :v1 do
       mount_devise_token_auth_for 'Student', at: 'students', controllers: { registrations: 'api/v1/registrations', sessions: 'api/v1/sessions' }
