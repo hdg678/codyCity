@@ -20,6 +20,7 @@
         </div>
       <% end %>
     <% elsif instructor_signed_in? %>
+      <!-- Most of these just have placeholders -->
       <%= link_to courses_path do %>
         <div class="sidebar-icon <%= 'sidebar-icon-selected' if current_page?(courses_path) %>">
           <%= image_tag 'home-240.png' %>
@@ -27,7 +28,7 @@
         </div>
       <% end %>
       <%= link_to root_path do %>
-        <div class="sidebar-icon <%= 'sidebar-icon-selected' if current_page?(course_path) %>">
+        <div class="sidebar-icon <%= 'sidebar-icon-selected' if current_page?(root_path) %>">
           <%= image_tag 'home-240.png' %>
           <p>Slides</p>
         </div>
