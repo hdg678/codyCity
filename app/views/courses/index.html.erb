@@ -11,7 +11,7 @@
       <div class="card-3">
         <div class="card-image">
         </div>
-        <p class="card-title"><%= course.title %></p>
+        <p class="card-title"><%= link_to course.title, course_path(course) %></p>
       </div>
     <% end %>
     <br />
