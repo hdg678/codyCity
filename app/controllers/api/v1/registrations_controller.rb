@@ -1,5 +1,6 @@
 class Api::V1::RegistrationsController < DeviseTokenAuth::RegistrationsController
   include Subdomains
+  include Api::V1::Exceptions
 
   respond_to :json
   before_action :require_token, only: [:new, :create]
