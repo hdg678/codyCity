@@ -3,6 +3,7 @@ require 'test_helper'
 class LessonsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @lesson = lessons(:one)
+    host! get_hostname
   end
 
   test "should get index" do

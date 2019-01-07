@@ -3,11 +3,11 @@
 one:
   organization: one
   email: MyString
-  type: 
+  token_type: 
   token: MyString
 
 two:
   organization: two
   email: MyString
-  type: 
+  token_type: 
   token: MyString

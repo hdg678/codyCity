@@ -3,6 +3,7 @@ require 'test_helper'
 class DevelopersControllerTest < ActionDispatch::IntegrationTest
   setup do
     @developer = developers(:one)
+    host! get_hostname
   end
 
   test "should get index" do
