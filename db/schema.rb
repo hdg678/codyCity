@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_03_182940) do
+ActiveRecord::Schema.define(version: 2019_01_09_003826) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -83,6 +83,11 @@ ActiveRecord::Schema.define(version: 2018_12_03_182940) do
     t.string "provider"
     t.string "uid"
     t.text "tokens"
+    t.string "first_name"
+    t.string "last_name"
+    t.boolean "is_teacher"
+    t.string "github_username"
+    t.string "github_password"
     t.index ["confirmation_token"], name: "index_developers_on_confirmation_token", unique: true
     t.index ["email"], name: "index_developers_on_email", unique: true
     t.index ["organization_id"], name: "index_developers_on_organization_id"
@@ -126,6 +131,8 @@ ActiveRecord::Schema.define(version: 2018_12_03_182940) do
     t.string "provider"
     t.string "uid"
     t.text "tokens"
+    t.string "first_name"
+    t.string "last_name"
     t.index ["confirmation_token"], name: "index_instructors_on_confirmation_token", unique: true
     t.index ["email"], name: "index_instructors_on_email", unique: true
     t.index ["organization_id"], name: "index_instructors_on_organization_id"
@@ -139,6 +146,7 @@ ActiveRecord::Schema.define(version: 2018_12_03_182940) do
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "value_for_order"
     t.index ["course_id"], name: "index_lessons_on_course_id"
   end
 

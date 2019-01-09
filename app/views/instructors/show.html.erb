@@ -20,15 +20,5 @@
   <%= @instructor.password %>
 </p>
 
-<p>
-  <strong>Course:</strong>
-  <%= @instructor.course_id %>
-</p>
-
-<p>
-  <strong>Integer:</strong>
-  <%= @instructor.integer %>
-</p>
-
 <%= link_to 'Edit', edit_instructor_path(@instructor) %> |
 <%= link_to 'Back', instructors_path %>

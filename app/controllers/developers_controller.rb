@@ -25,7 +25,6 @@ class DevelopersController < ApplicationController
   # POST /developers.json
   def create
     @developer = Developer.new(developer_params)
-
     respond_to do |format|
       if @developer.save
         format.html { redirect_to @developer, notice: 'Developer was successfully created.' }
@@ -69,6 +68,6 @@ class DevelopersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def developer_params
-      params.require(:developer).permit(:first_name, :last_name, :email, :password, :github_username, :github_password, :is_teacher)
+      params.require(:developer).permit(:first_name, :last_name, :email, :password, :github_username, :github_password, :is_teacher, :uid, :organization_id)
     end
 end

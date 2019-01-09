@@ -30,6 +30,14 @@ class RegistrationsController < Devise::RegistrationsController
     end
   end
 
+  def after_sign_up_path_for(resource)
+    resource
+  end
+
+  def after_inactive_sign_up_path_for(resource)
+    resource
+  end
+
 private
 
   def require_token
@@ -40,8 +48,6 @@ private
     end
 
     @ost = OrganizationUserToken.find_by(token: token, token_type: type)
-    print(token + "\n")
-    print(type + "\n")
     if !@ost
       raise ActionController::RoutingError.new('Invalid token')
     end

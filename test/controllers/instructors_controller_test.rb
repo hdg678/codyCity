@@ -3,6 +3,7 @@ require 'test_helper'
 class InstructorsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @instructor = instructors(:one)
+    @token = organization_user_tokens(:instructor_one)
     host! get_hostname
   end
 
@@ -18,7 +19,7 @@ class InstructorsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create instructor" do
     assert_difference('Instructor.count') do
-      post instructors_url, params: { instructor: { course_id: @instructor.course_id, email: @instructor.email, first_name: @instructor.first_name, integer: @instructor.integer, last_name: @instructor.last_name, password: @instructor.password } }
+      post instructors_url, params: { instructor: { email: "instructor3@test.com", first_name: @instructor.first_name, last_name: @instructor.last_name, password: "@instructor.password" }, token: @token.token }
     end
 
     assert_redirected_to instructor_url(Instructor.last)
@@ -35,7 +36,7 @@ class InstructorsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update instructor" do
-    patch instructor_url(@instructor), params: { instructor: { course_id: @instructor.course_id, email: @instructor.email, first_name: @instructor.first_name, integer: @instructor.integer, last_name: @instructor.last_name, password: @instructor.password } }
+    patch instructor_url(@instructor), params: { instructor: { email: @instructor.email, first_name: @instructor.first_name, last_name: @instructor.last_name, password: @instructor.password } }
     assert_redirected_to instructor_url(@instructor)
   end
 

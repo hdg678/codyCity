@@ -6,5 +6,9 @@
 #
 one:
   email: developer1@test.com
+  organization: one
+  uid: uid1
 two:
   email: developer2@test.com
+  organization: two
+  uid: uid2

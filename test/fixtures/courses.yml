@@ -5,9 +5,11 @@ one:
   description: MyString
   image_url: MyString
   developer: one
+  organization: one
 
 two:
   title: MyString
   description: MyString
   image_url: MyString
   developer: two
+  organization: two

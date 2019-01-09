@@ -11,3 +11,27 @@ two:
   email: MyString
   token_type: 
   token: MyString
+
+student_one:
+  organization: one
+  email: student1@test.com
+  token_type: student
+  token: aaaaaaaa
+
+instructor_one:
+  organization: one
+  email: instructor1@test.com
+  token_type: instructor
+  token: bbbbbbbb
+
+developer_one:
+  organization: one
+  email: developer3@test.com
+  token_type: developer
+  token: cccccccc
+
+admin_one:
+  organization: one
+  email: admin1@test.com
+  token_type: admin
+  token: dddddddd

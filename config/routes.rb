@@ -3,8 +3,6 @@ Rails.application.routes.draw do
   devise_for :instructors, controllers: { registrations: :registrations }
   devise_for :developers, controllers: { registrations: :registrations }
   devise_for :admins
-
-  resources :courses
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   root 'pages#root'
@@ -15,6 +13,11 @@ Rails.application.routes.draw do
   resources :courses
   resources :lessons
   resources :exercises
+
+  resources :students
+  resources :instructors
+  resources :developers
+  resources :admins
 
   namespace :api do
     namespace :v1 do
