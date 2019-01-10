@@ -5,4 +5,9 @@ class Exercise < ApplicationRecord
 
   validates :title, presence: true
   validates :point_value, presence: true, numericality: { min: 0 }
+
+  def check_response?(response)
+    print(response)
+    print("\n")
+  end
 end
