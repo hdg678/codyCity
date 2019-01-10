@@ -1,5 +1,41 @@
+<script>
+//stolen from lesson index until we have slides object
+$(document).ready(function() {
+  // Start off hiding all exercises
+  lessons = $(".lesson-container");
+  for (var i = 0; i < lessons.length; ++i) {
+    $(lessons[i]).find(".exercises").hide();
+  }
+
+  $(".expand-button").click(function(event) {
+    button = $(event.currentTarget);
+    if (button.html() == "-") {
+      button.html("+");
+    } else if (button.html() == "+") {
+      button.html("-");
+    }
+    exerciseContainer = $(event.currentTarget).parent().find(".exercises");
+    exerciseContainer.toggle();
+  });
+});
+</script>
 <p id="notice"><%= notice %></p>
 
-<% if instructor_signed_in? %>
-  <h1 class="heading">Slides</h1>
-<% end %>
+
+<hr />
+
+<% #@lessons.each do |lesson| %>
+  <div class="lesson-container" data-lessonid="1">
+    <button class="expand-button" data-lessonid="1">+</button>
+    <%= link_to "Slide", root_path %>
+    <div class="exercises">
+      <% #lesson.exercises.each do |exercise| %>
+        <div class="exercise-listing">
+        <%#f.text_field :title, :readonly => true%>
+        <%= link_to "download", root_path%>
+        </div>
+      <% #end %>
+    </div>
+    <hr />
+  </div>
+<% #end %>
