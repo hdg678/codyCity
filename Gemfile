@@ -45,6 +45,9 @@ gem 'devise_token_auth'
 # Used for github integration Read more: https://github.com/octokit/octokit.rb
 gem "dotenv-rails"
 
+# Use docker-api to work with containers for code testing
+gem 'docker-api'
+
 gem 'bootsnap', require: false
 
 group :development, :test do

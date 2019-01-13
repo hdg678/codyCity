@@ -4,6 +4,7 @@ class Course < ApplicationRecord
 
   has_many :lessons, dependent: :destroy
   has_many :student_courses, dependent: :destroy
+  has_many :students, through: :student_courses
 
   validates :title, presence: true
   validates :description, presence: true
