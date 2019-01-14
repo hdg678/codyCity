@@ -2,7 +2,7 @@ module User
   extend ActiveSupport::Concern
 
   included do
-    validate :email_must_be_unique_across_account_types
+    validate :email_must_be_unique_across_account_types, on: :create
   end
 
   def email_must_be_unique_across_account_types

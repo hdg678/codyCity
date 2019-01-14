@@ -6,9 +6,11 @@
 #
 one:
   email: developer1@test.com
+  first_name: A
+  last_name: B
   organization: one
-  uid: uid1
 two:
   email: developer2@test.com
+  first_name: afascinatingfirstname
+  last_name: somethingevenbetter
   organization: two
-  uid: uid2
