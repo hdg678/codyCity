@@ -7,6 +7,11 @@ class Student < ApplicationRecord
          :lockable
 
   include DeviseTokenAuth::Concerns::User
+  include User
+
+  before_validation do
+    self.uid ||= email
+  end
 
   belongs_to :organization
   has_one :profile, as: :viewable
@@ -16,4 +21,8 @@ class Student < ApplicationRecord
 
   has_many :student_exercises
   has_many :exercises, through: :student_exercises
+
+  validates :first_name, presence: true, length: { maximum: 30 }
+  validates :last_name, presence: true, length: { maximum: 30 }
+  validates :email, presence: true, format: Devise.email_regexp, uniqueness: true
 end

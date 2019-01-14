@@ -1,15 +1,12 @@
 require 'test_helper'
 
 class StudentTest < ActiveSupport::TestCase
-  def setup
-  end
-
   test "valid student" do
+    organization = organizations(:one)
     student = Student.new(email: "teststudent@test.com",
-      organization: @organization,
+      organization: organization,
       first_name: "Adam",
-      last_name: "Smith",
-      token: "12345678")
+      last_name: "Smith")
     assert student.valid?
   end
 
@@ -43,10 +40,9 @@ class StudentTest < ActiveSupport::TestCase
     assert valid_organization.errors[:organization].empty?
   end
 
-  test "uid not required" do
-    # UID must exist
-    no_uid = Student.new(uid: nil)
-    assert no_uid.valid?
+  test "uid not required with email" do
+    # UID doesn't raise errors if email is provided
+    no_uid = Student.new(uid: nil, email: "uidtester@test.com")
     assert no_uid.errors[:uid].empty?
   end
 
@@ -85,6 +81,8 @@ class StudentTest < ActiveSupport::TestCase
   end
 
   test "valid token" do
+    skip
+
     # Token must exist
     no_token = Student.new(token: nil)
     assert_not no_token.valid?
@@ -117,6 +115,25 @@ class StudentTest < ActiveSupport::TestCase
   end
 
   test "unique email" do
+    # Unique email with respect to same account type
+    organization = organizations(:one)
+    first = Student.new(email: "first@test.com",
+      organization: organization,
+      first_name: "Adam",
+      last_name: "Smith")
+    first.save
+
+    dup = Student.new(email: "first@test.com",
+      organization: organization,
+      first_name: "Bob",
+      last_name: "Latta")
+    assert_not dup.valid?
+
     # Unique email with respect to other account types
+    second_dup = Student.new(email: "instructorone@test.com",
+      organization: organization,
+      first_name: "Marcy",
+      last_name: "Kaptor")
+    assert_not second_dup.valid?
   end
 end
