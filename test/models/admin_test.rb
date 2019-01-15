@@ -6,7 +6,9 @@ class AdminTest < ActiveSupport::TestCase
     admin = Admin.new(email: "teststudent@test.com",
       organization: organization,
       first_name: "Julia",
-      last_name: "Fr")
+      last_name: "Fr",
+      password: "adamsmithspassword",
+      password_confirmation: "adamsmithspassword")
     assert admin.valid?
   end
 
@@ -135,5 +137,47 @@ class AdminTest < ActiveSupport::TestCase
       first_name: "Marcy",
       last_name: "Kaptor")
     assert_not second_dup.valid?
+  end
+
+  test "valid password" do
+    # Last name must exist
+    no_last_name = Admin.new(last_name: nil)
+    assert_not no_last_name.valid?
+    assert_not no_last_name.errors[:last_name].empty?
+
+    # Last name must be shorter than 31 characters
+    long_last_name = Admin.new(last_name: "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+    assert_not long_last_name.valid?
+    assert_not long_last_name.errors[:last_name].empty?
+
+    # A valid last name produces no errors
+    valid_last_name = Admin.new(last_name: "Last Name")
+    valid_last_name.valid?
+    assert valid_last_name.errors[:last_name].empty?
+
+    # Password must exist
+    no_password = Admin.new(password: nil, password_confirmation: nil)
+    assert_not no_password.valid?
+    assert_not no_password.errors[:password].empty?
+
+    # Confirmation must exist
+    no_confirmation = Admin.new(password: "avalidpassword", password_confirmation: nil)
+    assert_not no_confirmation.valid?
+    assert_not no_confirmation.errors[:password_confirmation].empty?
+
+    # Password must be at least 10 characters long
+    too_short = Admin.new(password: "short", password_confirmation: "short")
+    assert_not too_short.valid?
+    assert_not too_short.errors[:password].empty?
+
+    # Password and confirmation must match
+    mismatch = Admin.new(password: "passwordpassword", password_confirmation: "passwordpasswordpassword")
+    assert_not mismatch.valid?
+    assert_not mismatch.errors[:password_confirmation].empty?
+
+    # A valid password produces no errors
+    valid_password = Admin.new(password: "avalidpassword", password_confirmation: "avalidpassword")
+    valid_password.valid?
+    assert valid_password.errors[:password].empty?
   end
 end

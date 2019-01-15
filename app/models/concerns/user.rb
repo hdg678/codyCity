@@ -3,6 +3,16 @@ module User
 
   included do
     validate :email_must_be_unique_across_account_types, on: :create
+
+    before_validation do
+      self.uid ||= email
+    end
+
+    validates :first_name, presence: true, length: { maximum: 30 }
+    validates :last_name, presence: true, length: { maximum: 30 }
+    validates :email, presence: true, format: Devise.email_regexp, uniqueness: true
+    validates :password, presence: true, confirmation: true, length: { minimum: 10 }, on: :create
+    validates :password_confirmation, presence: true, on: :create
   end
 
   def email_must_be_unique_across_account_types

@@ -19,7 +19,7 @@ class InstructorsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create instructor" do
     assert_difference('Instructor.count') do
-      post instructors_url, params: { instructor: { email: "instructor3@test.com", first_name: @instructor.first_name, last_name: @instructor.last_name, password: "@instructor.password" }, token: @token.token }
+      post instructors_url, params: { instructor: { email: "instructor3@test.com", first_name: @instructor.first_name, last_name: @instructor.last_name, password: "@instructor.password", password_confirmation: "@instructor.password" }, token: @token.token }
     end
 
     assert_redirected_to instructor_url(Instructor.last)
