@@ -9,4 +9,5 @@ class Admin < ApplicationRecord
   include User
 
   belongs_to :organization
+  has_one :profile, as: :viewable
 end
