@@ -5,5 +5,5 @@ class Organization < ApplicationRecord
   has_many :students
   has_many :courses
 
-  validates :name, presence: true
+  validates :name, presence: true, length: { maximum: 100 }
 end
