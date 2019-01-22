@@ -21,15 +21,15 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      mount_devise_token_auth_for 'Student', at: 'students', controllers: { registrations: 'api/v1/registrations', sessions: 'api/v1/sessions' }
-      mount_devise_token_auth_for 'Instructor', at: 'instructors', controllers: { registrations: 'api/v1/registrations', sessions: 'api/v1/sessions' }
-      mount_devise_token_auth_for 'Developer', at: 'developers', controllers: { registrations: 'api/v1/registrations', sessions: 'api/v1/sessions' }
-      mount_devise_token_auth_for 'Admin', at: 'admins', controllers: { registrations: 'api/v1/registrations', sessions: 'api/v1/sessions' }
+      mount_devise_token_auth_for 'Student', at: 'students', controllers: { sessions: 'api/v1/sessions' }, skip: [:registrations, :passwords, :confirmations, :omniauth_callbacks, :unlocks]
+      mount_devise_token_auth_for 'Instructor', at: 'instructors', controllers: { sessions: 'api/v1/sessions' }, skip: [:registrations, :passwords, :confirmations, :omniauth_callbacks, :unlocks]
+      mount_devise_token_auth_for 'Developer', at: 'developers', controllers: { sessions: 'api/v1/sessions' }, skip: [:registrations, :passwords, :confirmations, :omniauth_callbacks, :unlocks]
+      mount_devise_token_auth_for 'Admin', at: 'admins', controllers: { sessions: 'api/v1/sessions' }, skip: [:registrations, :passwords, :confirmations, :omniauth_callbacks, :unlocks]
 
       get 'tokens/generate', to: 'organization_user_tokens#generate'
 
-      resources :courses do
-        resources :lessons do
+      resources :courses, only: [] do
+        resources :lessons, only: [] do
           resources :exercises, only: [:index, :show]
           post 'exercises/push', to: 'exercises#push'
         end
