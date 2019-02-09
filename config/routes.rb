@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'ide/IDE'
   devise_for :students, controllers: { registrations: :registrations }
   devise_for :instructors, controllers: { registrations: :registrations }
   devise_for :developers, controllers: { registrations: :registrations }
