@@ -6,7 +6,6 @@ one:
   image_url: MyString
   developer: one
   organization: one
-
 two:
   title: MyString
   description: MyString

@@ -45,6 +45,9 @@ gem 'devise_token_auth'
 # Used for github integration Read more: https://github.com/octokit/octokit.rb
 gem "dotenv-rails"
 
+# Use docker-api to work with containers for code testing
+gem 'docker-api'
+
 gem 'bootsnap', require: false
 
 group :development, :test do
@@ -59,6 +62,10 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+end
+
+group :test do
+  gem 'simplecov'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

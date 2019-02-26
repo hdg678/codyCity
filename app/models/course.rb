@@ -4,7 +4,9 @@ class Course < ApplicationRecord
 
   has_many :lessons, dependent: :destroy
   has_many :student_courses, dependent: :destroy
+  has_many :students, through: :student_courses
 
-  validates :title, presence: true
-  validates :description, presence: true
+  validates :title, presence: true, length: { maximum: 200 }
+  validates :description, presence: true, length: { maximum: 2000 }
+  validates :image_url, presence: true
 end

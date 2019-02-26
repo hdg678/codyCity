@@ -6,9 +6,15 @@
 #
 one:
   email: developer1@test.com
+  first_name: A
+  last_name: B
   organization: one
-  uid: uid1
+  provider: email
+  encrypted_password: <%= Student.new.send(:password_digest, 'securepassword') %>
+  confirmed_at: <%= Time.zone.now - 1.hour %>
+  confirmation_sent_at: <%= Time.zone.now - 2.hours %>
 two:
   email: developer2@test.com
+  first_name: afascinatingfirstname
+  last_name: somethingevenbetter
   organization: two
-  uid: uid2

@@ -6,7 +6,8 @@ class Admin < ApplicationRecord
          :confirmable, :lockable
 
   include DeviseTokenAuth::Concerns::User
+  include User
 
   belongs_to :organization
-  
+  has_one :profile, as: :viewable
 end

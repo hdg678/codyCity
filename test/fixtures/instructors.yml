@@ -5,6 +5,11 @@
 # below each fixture, per the syntax in the comments below
 #
 one:
-  email: jonathan.russ.buchanan@gmail.com
+  email: instructorone@test.com
   organization: one
-  uid: instructoruid1
+  first_name: Daniel
+  last_name: Stevens
+  provider: email
+  encrypted_password: <%= Student.new.send(:password_digest, 'securepassword') %>
+  confirmed_at: <%= Time.zone.now - 1.hour %>
+  confirmation_sent_at: <%= Time.zone.now - 2.hours %>

@@ -7,6 +7,7 @@ class Student < ApplicationRecord
          :lockable
 
   include DeviseTokenAuth::Concerns::User
+  include User
 
   belongs_to :organization
   has_one :profile, as: :viewable

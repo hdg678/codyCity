@@ -19,7 +19,7 @@ class DevelopersControllerTest < ActionDispatch::IntegrationTest
 
   test "should create developer" do
     assert_difference('Developer.count') do
-      post developers_url, params: { developer: { email: "developer3@test.com", first_name: @developer.first_name, github_password: @developer.github_password, github_username: @developer.github_username, is_teacher: @developer.is_teacher, last_name: @developer.last_name, password: "@developer.password" }, token: @token.token }
+      post developers_url, params: { developer: { email: "developer3@test.com", first_name: @developer.first_name, github_password: @developer.github_password, github_username: @developer.github_username, is_teacher: @developer.is_teacher, last_name: @developer.last_name, password: "@developer.password", password_confirmation: "@developer.password" }, token: @token.token }
     end
 
     assert_redirected_to developer_url(Developer.last)
