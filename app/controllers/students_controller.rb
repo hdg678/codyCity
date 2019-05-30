@@ -5,32 +5,31 @@ class StudentsController < ApplicationController
   # GET /students
 	def index
 	  @student = Student.all
-	end	
+	end
 
   # GET /students/1
 	def show
 		student
-	end	
+	end
 
   # GET /students/new
 	def new
     new_student
 	end
-	
+
   # POST /students
 	def create
-    byebug
     if new_student(student_params).save
       redirect_to new_student
     else
       render :new
     end
 	end
-	
+
   # GET /students/:id/edit
 	def edit
 
-	end	
+	end
 
   # PATCH/PUT /students/1
 	def update
