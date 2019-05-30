@@ -1,0 +1,25 @@
+<%= form_for(exercise) do |f| %>
+  <div class="field">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= f.label :instructions %>
+    <%= f.text_field :instructions %>
+  </div>
+
+  <div class="field">
+    <%= f.label :lesson_id %>
+    <%= f.text_field :lesson_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :point_value %>
+    <%= f.text_field :point_value %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
