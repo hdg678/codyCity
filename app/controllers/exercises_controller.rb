@@ -13,7 +13,11 @@ class ExercisesController < ApplicationController
   end
 
   def update
-
+    if @exercise.update(exercise_params)
+      redirect_to @exercise
+    else
+      render :edit
+    end
   end
 
   def new
@@ -36,6 +40,6 @@ class ExercisesController < ApplicationController
   end
 
   def exercise_params
-    params.require(:exercise).permit(:title, :instructions, :lesson_id, :point_value)
+    params.require(:exercise).permit(:title, :instructions, :lesson_id, :point_value, :exercise_file, :test_file)
   end
 end
