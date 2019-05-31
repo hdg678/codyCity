@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_31_233300) do
+ActiveRecord::Schema.define(version: 2019_05_31_235523) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -122,7 +122,6 @@ ActiveRecord::Schema.define(version: 2019_05_31_233300) do
     t.string "title"
     t.text "instructions"
     t.string "point_value"
-    t.string "test_file_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["lesson_id"], name: "index_exercises_on_lesson_id"
