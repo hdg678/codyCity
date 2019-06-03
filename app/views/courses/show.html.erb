@@ -34,6 +34,9 @@ $(document).ready(function() {
           <%= link_to exercise.title, exercise_path(exercise) %>
         </div>
       <% end %>
+      <div class="exercise-listing">
+        <%= link_to "New Exercise", new_exercise_path %>
+      </div>
     </div>
     <hr />
   </div>

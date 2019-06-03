@@ -3,4 +3,12 @@
 <h1>Instructions</h1>
 <p><%= @exercise.instructions %></p>
 
+<h1>Exercise File</h1>
+<%= link_to "Download", exercise_exercise_file_path(@exercise) %>
+
+<h1>Test File</h1>
+<%= link_to "Download", exercise_test_file_path(@exercise) %>
+
+<br />
+
 <%= link_to 'Edit', edit_exercise_path(@exercise) %>

@@ -362,3 +362,8 @@ hr {
   border-bottom-width: 1px;
   border-color: #0896BB;
 }
+
+code {
+  color: black;
+  background-color: #CCCCCC;
+}

@@ -12,7 +12,10 @@ Rails.application.routes.draw do
 
   resources :courses
   resources :lessons
-  resources :exercises
+  resources :exercises do
+    get 'exercise_file', to: 'exercises#download_exercise_file'
+    get 'test_file', to: 'exercises#download_test_file'
+  end
 
   resources :students
   resources :instructors

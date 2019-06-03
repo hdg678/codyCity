@@ -9,6 +9,20 @@ class ExercisesController < ApplicationController
   def show
   end
 
+  def download_exercise_file
+    @exercise = Exercise.find(params[:exercise_id])
+    send_data @exercise.exercise_file.download,
+      filename: @exercise.exercise_file.filename.to_s,
+      content_type: @exercise.exercise_file.content_type
+  end
+
+  def download_test_file
+    @exercise = Exercise.find(params[:exercise_id])
+    send_data @exercise.test_file.download,
+      filename: @exercise.test_file.filename.to_s,
+      content_type: @exercise.test_file.content_type
+  end
+
   def edit
   end
 
