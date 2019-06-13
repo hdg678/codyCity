@@ -44,6 +44,8 @@ $(document).ready(function() {
     <% @lesson.exercises.each do |exercise| %>
       <h3><%= link_to exercise.title, exercise %></h3>
     <% end %>
-    <h3><%= link_to "New Exercise", new_exercise_path %></h3>
+    <% if instructor_signed_in? %>
+      <h3><%= link_to "New Exercise", new_exercise_path %></h3>
+    <% end %>
   </div>
 </div>
