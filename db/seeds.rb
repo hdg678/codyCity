@@ -32,3 +32,6 @@ c1 = o1.courses.create! title: "My test course 1", description: "This is simply 
     l.exercises.create! title: "Exercise #{j}", point_value: 1
   end
 end
+1.upto(5) do |i|
+  Student.find(i).courses << c1
+end
