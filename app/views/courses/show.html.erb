@@ -19,23 +19,24 @@ $(document).ready(function() {
   });
 });
 </script>
-<p id="notice"><%= notice %></p>
 
 
 <hr />
 
-<% #@lessons.each do |lesson| %>
+<% @course.lessons.each do |lesson| %>
   <div class="lesson-container" data-lessonid="1">
     <button class="expand-button" data-lessonid="1">+</button>
-    <%= link_to "Slide", root_path %>
+    <%= link_to lesson.title, lesson_path(lesson) %>
     <div class="exercises">
-      <% #lesson.exercises.each do |exercise| %>
+      <% lesson.exercises.each do |exercise| %>
         <div class="exercise-listing">
-        <%#f.text_field :title, :readonly => true%>
-        <%= link_to "download", root_path%>
+          <%= link_to exercise.title, exercise_path(exercise) %>
         </div>
-      <% #end %>
+      <% end %>
+      <div class="exercise-listing">
+        <%= link_to "New Exercise", new_exercise_path %>
+      </div>
     </div>
     <hr />
   </div>
-<% #end %>
+<% end %>

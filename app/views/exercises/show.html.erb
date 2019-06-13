@@ -1,0 +1,19 @@
+<h1 class="heading"><%= @exercise.title %></h1>
+
+<h1>Instructions</h1>
+<p><%= @exercise.instructions %></p>
+
+<% if @exercise.exercise_file.attached? %>
+  <h1>Exercise File</h1>
+  <%= link_to "Download", exercise_exercise_file_path(@exercise) %>
+<% end %>
+
+<% if @exercise.test_file.attached? %>
+  <h1>Test File</h1>
+  <%= link_to "Download", exercise_test_file_path(@exercise) %>
+<% end %>
+<br />
+
+<% if instructor_signed_in? %>
+  <%= link_to 'Edit', edit_exercise_path(@exercise) %>
+<% end %>

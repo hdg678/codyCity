@@ -11,22 +11,23 @@ $(document).ready(function() {
   });
 });
 </script>
-<p id="notice"><%= notice %></p>
-
 <h1 class="heading"><%= @lesson.title %></h1>
 
 <div class="horizontal-selector horizontal-selector-light">
   <div class="selector-option selector-option-light" id="slides-selector">
     <h3>Slides<h3>
   </div>
-  <div class="selector-option selector-option-light" id="video-selector">
-    <h3>Video<h3>
-  </div>
+  <% has_video = false %>
+  <% if has_video %>
+    <div class="selector-option selector-option-light" id="video-selector">
+      <h3>Video<h3>
+    </div>
+  <% end %>
   <div class="selector-option selector-option-light" id="source-selector">
     <h3>Source<h3>
   </div>
   <div class="selector-option selector-option-light" id="challenges-selector">
-    <h3>Challenges<h3>
+    <h3>Exercises<h3>
   </div>
 </div>
 <div class="lesson-display blue-border" id="display">
@@ -40,6 +41,9 @@ $(document).ready(function() {
     Source
   </div>
   <div id="challenges-display">
-    Challenges
+    <% @lesson.exercises.each do |exercise| %>
+      <h3><%= link_to exercise.title, exercise %></h3>
+    <% end %>
+    <h3><%= link_to "New Exercise", new_exercise_path %></h3>
   </div>
 </div>
