@@ -39,9 +39,6 @@ gem "httparty"
 gem 'rubyzip'
 gem 'zip-zip'
 
-gem 'devise'
-gem 'devise_token_auth'
-
 # Used for github integration Read more: https://github.com/octokit/octokit.rb
 gem "dotenv-rails"
 
@@ -64,4 +61,4 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-# /course/lessons md/exercise/ test, code, md 
+# /course/lessons md/exercise/ test, code, md

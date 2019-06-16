@@ -2,26 +2,30 @@ o1 = Organization.create name: 'organization-1'
 o1.save
 
 1.upto(5) do |i|
-  s = Student.new email: "student-#{i}@example.com", password: "student-#{i}@example.com", provider: "email", organization: o1
-  s.skip_confirmation!
+  s = Student.new email: "student-#{i}@example.com", organization: o1
+  #s = Student.new email: "student-#{i}@example.com", password: "student-#{i}@example.com", provider: "email", organization: o1
+  #s.skip_confirmation!
   s.save!
 end
 
 1.upto(3) do |i|
-  i = Instructor.new email: "instructor-#{i}@example.com", password: "instructor-#{i}@example.com", provider: "email", organization: o1
-  i.skip_confirmation!
+  i = Instructor.new email: "instructor-#{i}@example.com", organization: o1
+  #i = Instructor.new email: "instructor-#{i}@example.com", password: "instructor-#{i}@example.com", provider: "email", organization: o1
+  #i.skip_confirmation!
   i.save!
 end
 
 1.upto(3) do |i|
-  d = Developer.new email: "developer-#{i}@example.com", password: "developer-#{i}@example.com", provider: "email", organization: o1
-  d.skip_confirmation!
+  d = Developer.new email: "developer-#{i}@example.com", organization: o1
+  #d = Developer.new email: "developer-#{i}@example.com", password: "developer-#{i}@example.com", provider: "email", organization: o1
+  #d.skip_confirmation!
   d.save!
 end
 
 1.upto(2) do |i|
-  a = Admin.new email: "admin-#{i}@example.com", password: "admin-#{i}@example.com", provider: "email", organization: o1
-  a.skip_confirmation!
+  a = Admin.new email: "admin-#{i}@example.com", organization: o1
+  #a = Admin.new email: "admin-#{i}@example.com", password: "admin-#{i}@example.com", provider: "email", organization: o1
+  #a.skip_confirmation!
   a.save!
 end
 

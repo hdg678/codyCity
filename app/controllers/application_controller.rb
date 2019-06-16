@@ -11,7 +11,8 @@ class ApplicationController < ActionController::Base
   private
 
   def current_user
-    current_student || current_instructor || current_developer || current_admin
+    #current_student || current_instructor || current_developer || current_admin
+    return nil
   end
 
   def user_signed_in?
@@ -25,7 +26,7 @@ class ApplicationController < ActionController::Base
   def instructor_signed_in?
     current_instructor != nil
   end
-  
+
   def developer_signed_in?
     current_developer != nil
   end
