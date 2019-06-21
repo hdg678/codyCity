@@ -1,0 +1,10 @@
+entrypoint: bundle exec rackup --port $PORT
+env: flex
+runtime: ruby
+
+runtime_config:
+        dotenv_config: flex-env-config
+env_variables:
+        SECRET_KEY_BASE: 94b7d2f9fe9328717c9a45a28de39f359e4205440ec54d1e4ed1d2ef62ac824ca41cad8b595bc22059df93b366547f6529b0b42d610a3ff394304e8a90ed7114
+beta_settings:
+        cloud_sql_instances: code-city-244123:us-central1:codecitydatabase
