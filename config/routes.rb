@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   get '/sign_in', to: 'pages#sign_in'
   get '/sign_up', to: 'pages#sign_up'
 
+  resources :organizations, only: [:index, :show]
+
   resources :courses
   resources :lessons
   resources :exercises do

@@ -1,8 +1,6 @@
 class PagesController < ApplicationController
   def root
-    if !user_signed_in?
-      redirect_to sign_in_path
-    else
+    if user_signed_in?
       redirect_to courses_path
     end
   end
