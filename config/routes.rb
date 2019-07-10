@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   resources :developers
   resources :admins
 
+  resources :sessions, only: [:new, :create, :destroy]
+
   namespace :api do
     namespace :v1 do
       resources :students, only: [:index, :show]
