@@ -3,24 +3,26 @@ Rails.application.routes.draw do
 
   root 'pages#root'
 
-  get '/sign_in', to: 'pages#sign_in'
-  get '/sign_up', to: 'pages#sign_up'
-
   resources :organizations, only: [:index, :show]
 
-  resources :courses
-  resources :lessons
-  resources :exercises do
-    get 'exercise_file', to: 'exercises#download_exercise_file'
-    get 'test_file', to: 'exercises#download_test_file'
+  constraints(lambda { |request| Organization.find_by(name: request.subdomain) }) do
+    get '/sign_in', to: 'pages#sign_in'
+    get '/sign_up', to: 'pages#sign_up'
+
+    resources :courses
+    resources :lessons
+    resources :exercises do
+      get 'exercise_file', to: 'exercises#download_exercise_file'
+      get 'test_file', to: 'exercises#download_test_file'
+    end
+
+    resources :students
+    resources :instructors
+    resources :developers
+    resources :admins
+
+    resources :sessions, only: [:new, :create, :destroy]
   end
-
-  resources :students
-  resources :instructors
-  resources :developers
-  resources :admins
-
-  resources :sessions, only: [:new, :create, :destroy]
 
   namespace :api do
     namespace :v1 do
