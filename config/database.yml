@@ -25,5 +25,11 @@ test:
   database: codeCity1-test
 
 production:
-  <<: *default
-  database: codeCity1-prod
+        adapter: postgresql
+        encoding: unicode
+        pool: 5
+        timeout: 5000
+        username: huntergregory
+        password: cookies
+        database: "codecitytest"
+        host: "/cloudsql/code-city-244123:us-central1:codecitydatabase"

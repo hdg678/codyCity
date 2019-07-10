@@ -62,3 +62,5 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # /course/lessons md/exercise/ test, code, md
+
+gem "appengine", "~> 0.4.6"
