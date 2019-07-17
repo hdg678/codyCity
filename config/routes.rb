@@ -1,39 +1,34 @@
 Rails.application.routes.draw do
-  devise_for :students, controllers: { registrations: :registrations }
-  devise_for :instructors, controllers: { registrations: :registrations }
-  devise_for :developers, controllers: { registrations: :registrations }
-  devise_for :admins
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   root 'pages#root'
 
-  get '/sign_in', to: 'pages#sign_in'
-  get '/sign_up', to: 'pages#sign_up'
+  resources :organizations, only: [:index, :show]
 
-  resources :courses
-  resources :lessons
-  resources :exercises do
-    get 'exercise_file', to: 'exercises#download_exercise_file'
-    get 'test_file', to: 'exercises#download_test_file'
+  constraints(lambda { |request| Organization.find_by(name: request.subdomain) }) do
+    get '/sign_in', to: 'pages#sign_in'
+    get '/sign_up', to: 'pages#sign_up'
+
+    resources :courses
+    resources :lessons
+    resources :exercises do
+      get 'exercise_file', to: 'exercises#download_exercise_file'
+      get 'test_file', to: 'exercises#download_test_file'
+    end
+
+    resources :students
+    resources :instructors
+    resources :developers
+    resources :admins
+
+    resources :sessions, only: [:new, :create, :destroy]
   end
-
-  resources :students
-  resources :instructors
-  resources :developers
-  resources :admins
 
   namespace :api do
     namespace :v1 do
-      mount_devise_token_auth_for 'Student', at: 'students', controllers: { registrations: 'api/v1/registrations', sessions: 'api/v1/sessions' }
       resources :students, only: [:index, :show]
-
-      mount_devise_token_auth_for 'Instructor', at: 'instructors', controllers: { registrations: 'api/v1/registrations', sessions: 'api/v1/sessions' }
       resources :instructors, only: [:index, :show]
-
-      mount_devise_token_auth_for 'Developer', at: 'developers', controllers: { registrations: 'api/v1/registrations', sessions: 'api/v1/sessions' }
       resources :developers, only: [:index, :show]
-
-      mount_devise_token_auth_for 'Admin', at: 'admins', controllers: { registrations: 'api/v1/registrations', sessions: 'api/v1/sessions' }
 
       get 'tokens/generate', to: 'organization_user_tokens#generate'
 

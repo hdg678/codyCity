@@ -1,5 +1,5 @@
 <script>
-$(document).ready(function() {
+/*$(document).ready(function() {
   horizontalSelector([
     {id: "professor-selector", attribute: "instructor", form: { action: "/instructors/sign_in" }},
     {id: "student-selector", attribute: "student", form: { action: "/students/sign_in" }}
@@ -9,7 +9,7 @@ $(document).ready(function() {
     bottom_element: $("#session-inputs"),
     first_selected: "jumbotron-form-sharp-top-left"
   });
-});
+});*/
 </script>
 <div class="jumbotron">
   <h1>Sign In</h1>
@@ -21,7 +21,7 @@ $(document).ready(function() {
       <h3>Student</h3>
     </div>
   </div>
-  <%= form_tag session_path(:instructor), id: 'session-form' do |f| %>
+  <%= form_tag sessions_path, id: 'session-form' do |f| %>
     <div class="jumbotron-form" id="session-inputs">
       <div class="jumbotron-form-group">
         <p class="jumbotron-form-label"><span>Email<span></p>
@@ -34,4 +34,5 @@ $(document).ready(function() {
     </div>
     <%= submit_tag 'Sign In', class: 'button' %>
   <% end %>
+  <%= link_to 'Sign Up', sign_up_path, class: 'button' %>
 </div>

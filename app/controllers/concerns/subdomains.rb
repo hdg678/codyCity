@@ -9,8 +9,5 @@ module Subdomains
 
   def load_organization
     @organization ||= Organization.find_by(name: request.subdomain)
-    if @organization.nil?
-      raise ActionController::RoutingError.new('Not Found')
-    end
   end
 end
