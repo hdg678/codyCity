@@ -21,7 +21,8 @@ Rails.application.routes.draw do
     resources :developers
     resources :admins
 
-    resources :sessions, only: [:new, :create, :destroy]
+    post 'login', to: 'sessions#create'
+    delete 'logout', to: 'sessions#destroy'
   end
 
   namespace :api do

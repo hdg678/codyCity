@@ -2,12 +2,12 @@
   <span class="logo header-item"></span>
   <h1 class="header-item header-title"><%= link_to 'Code City', '#' %></h1>
   <span class="nav-right header-item">
-    <% if current_student %>
-      <%= link_to 'Log Out', destroy_student_session_path, method: :delete %>
-    <% elsif current_instructor %>
-      <%= link_to 'Log Out', destroy_instructor_session_path, method: :delete %>
-    <% else %>
-      <%= link_to 'Log In', root_path %>
+    <% if @organization %>
+      <% if current_user %>
+        <%= link_to 'Log Out', logout_path, method: :delete %>
+      <% else %>
+        <%= link_to 'Log In', sign_in_path %>
+      <% end %>
     <% end %>
     <%= link_to 'Speakers', '#' %>
     <%= link_to 'Bootcamps', '#' %>
