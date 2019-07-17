@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_16_213806) do
+ActiveRecord::Schema.define(version: 2019_07_16_032249) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,7 +38,6 @@ ActiveRecord::Schema.define(version: 2019_06_16_213806) do
 
   create_table "admins", id: :serial, force: :cascade do |t|
     t.integer "organization_id"
-    t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
@@ -60,8 +59,8 @@ ActiveRecord::Schema.define(version: 2019_06_16_213806) do
     t.string "provider"
     t.string "uid"
     t.text "tokens"
+    t.integer "user_id"
     t.index ["confirmation_token"], name: "index_admins_on_confirmation_token", unique: true
-    t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["organization_id"], name: "index_admins_on_organization_id"
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
     t.index ["uid", "provider"], name: "index_admins_on_uid_and_provider", unique: true
@@ -82,7 +81,6 @@ ActiveRecord::Schema.define(version: 2019_06_16_213806) do
 
   create_table "developers", id: :serial, force: :cascade do |t|
     t.integer "organization_id"
-    t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
@@ -109,8 +107,8 @@ ActiveRecord::Schema.define(version: 2019_06_16_213806) do
     t.boolean "is_teacher"
     t.string "github_username"
     t.string "github_password"
+    t.integer "user_id"
     t.index ["confirmation_token"], name: "index_developers_on_confirmation_token", unique: true
-    t.index ["email"], name: "index_developers_on_email", unique: true
     t.index ["organization_id"], name: "index_developers_on_organization_id"
     t.index ["reset_password_token"], name: "index_developers_on_reset_password_token", unique: true
     t.index ["uid", "provider"], name: "index_developers_on_uid_and_provider", unique: true
@@ -129,7 +127,6 @@ ActiveRecord::Schema.define(version: 2019_06_16_213806) do
 
   create_table "instructors", id: :serial, force: :cascade do |t|
     t.integer "organization_id"
-    t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
@@ -153,8 +150,8 @@ ActiveRecord::Schema.define(version: 2019_06_16_213806) do
     t.text "tokens"
     t.string "first_name"
     t.string "last_name"
+    t.integer "user_id"
     t.index ["confirmation_token"], name: "index_instructors_on_confirmation_token", unique: true
-    t.index ["email"], name: "index_instructors_on_email", unique: true
     t.index ["organization_id"], name: "index_instructors_on_organization_id"
     t.index ["reset_password_token"], name: "index_instructors_on_reset_password_token", unique: true
     t.index ["uid", "provider"], name: "index_instructors_on_uid_and_provider", unique: true
@@ -220,7 +217,6 @@ ActiveRecord::Schema.define(version: 2019_06_16_213806) do
 
   create_table "students", id: :serial, force: :cascade do |t|
     t.integer "organization_id"
-    t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
@@ -242,8 +238,8 @@ ActiveRecord::Schema.define(version: 2019_06_16_213806) do
     t.string "provider"
     t.string "uid"
     t.text "tokens"
+    t.integer "user_id"
     t.index ["confirmation_token"], name: "index_students_on_confirmation_token", unique: true
-    t.index ["email"], name: "index_students_on_email", unique: true
     t.index ["organization_id"], name: "index_students_on_organization_id"
     t.index ["reset_password_token"], name: "index_students_on_reset_password_token", unique: true
     t.index ["uid", "provider"], name: "index_students_on_uid_and_provider", unique: true
@@ -257,14 +253,19 @@ ActiveRecord::Schema.define(version: 2019_06_16_213806) do
     t.string "last_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "account_id"
+    t.string "account_type"
   end
 
   add_foreign_key "admins", "organizations"
+  add_foreign_key "admins", "users"
   add_foreign_key "courses", "developers"
   add_foreign_key "courses", "organizations"
   add_foreign_key "developers", "organizations"
+  add_foreign_key "developers", "users"
   add_foreign_key "exercises", "lessons"
   add_foreign_key "instructors", "organizations"
+  add_foreign_key "instructors", "users"
   add_foreign_key "lessons", "courses"
   add_foreign_key "organization_user_tokens", "organizations"
   add_foreign_key "student_courses", "courses"
@@ -273,4 +274,5 @@ ActiveRecord::Schema.define(version: 2019_06_16_213806) do
   add_foreign_key "student_exercises", "instructors"
   add_foreign_key "student_exercises", "students"
   add_foreign_key "students", "organizations"
+  add_foreign_key "students", "users"
 end

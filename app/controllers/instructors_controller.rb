@@ -25,6 +25,7 @@ class InstructorsController < ApplicationController
   # POST /instructors.json
   def create
     @instructor = Instructor.new(instructor_params)
+    @instructor.organization = @organization
 
     if @instructor.save
       redirect_to @instructor, notice: 'Instructor was successfully created.'

@@ -2,31 +2,31 @@ o1 = Organization.create name: 'organization-1'
 o1.save
 
 1.upto(5) do |i|
-  s = Student.new email: "student-#{i}@example.com", organization: o1
-  #s = Student.new email: "student-#{i}@example.com", password: "student-#{i}@example.com", provider: "email", organization: o1
-  #s.skip_confirmation!
+  u = User.new email: "student-#{i}@example.com", password_digest: BCrypt::Password.create("student-#{i}@example.com")
+  s = Student.new user: u, organization: o1
   s.save!
+  u.save!
 end
 
 1.upto(3) do |i|
-  i = Instructor.new email: "instructor-#{i}@example.com", organization: o1
-  #i = Instructor.new email: "instructor-#{i}@example.com", password: "instructor-#{i}@example.com", provider: "email", organization: o1
-  #i.skip_confirmation!
+  u = User.new email: "instructor-#{i}@example.com", password_digest: BCrypt::Password.create("instructor-#{i}@example.com")
+  i = Instructor.new user: u, organization: o1
   i.save!
+  u.save!
 end
 
 1.upto(3) do |i|
-  d = Developer.new email: "developer-#{i}@example.com", organization: o1
-  #d = Developer.new email: "developer-#{i}@example.com", password: "developer-#{i}@example.com", provider: "email", organization: o1
-  #d.skip_confirmation!
+  u = User.new email: "developer-#{i}@example.com", password_digest: BCrypt::Password.create("developer-#{i}@example.com")
+  d = Developer.new user: u, organization: o1
   d.save!
+  u.save!
 end
 
 1.upto(2) do |i|
-  a = Admin.new email: "admin-#{i}@example.com", organization: o1
-  #a = Admin.new email: "admin-#{i}@example.com", password: "admin-#{i}@example.com", provider: "email", organization: o1
-  #a.skip_confirmation!
+  u = User.new email: "admin-#{i}@example.com", password_digest: BCrypt::Password.create("admin-#{i}@example.com")
+  a = Admin.new user: u, organization: o1
   a.save!
+  u.save!
 end
 
 c1 = o1.courses.create! title: "My test course 1", description: "This is simply the most awesome course ever", developer: o1.developers.first

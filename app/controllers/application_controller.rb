@@ -35,8 +35,11 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
-    #current_student || current_instructor || current_developer || current_admin
-    return nil
+    if session[:user_id]
+      @current_user ||= User.find(session[:user_id])
+    else
+      @current_user = nil
+    end
   end
 
   def user_signed_in?
@@ -44,18 +47,34 @@ class ApplicationController < ActionController::Base
   end
 
   def student_signed_in?
-    current_student != nil
+    if current_user
+      return current_user.account.is_a? Student
+    else
+      return nil
+    end
   end
 
   def instructor_signed_in?
-    current_instructor != nil
+    if current_user
+      return current_user.account.is_a? Instructor
+    else
+      return nil
+    end
   end
 
   def developer_signed_in?
-    current_developer != nil
+    if current_user
+      return current_user.account.is_a? Developer
+    else
+      return nil
+    end
   end
 
   def admin_signed_in?
-    current_admin != nil
+    if current_user
+      return current_user.account.is_a? Admin
+    else
+      return nil
+    end
   end
 end
