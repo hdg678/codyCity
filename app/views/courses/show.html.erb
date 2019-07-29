@@ -40,3 +40,14 @@ $(document).ready(function() {
     <hr />
   </div>
 <% end %>
+
+<div class="lesson-container">
+  <%= link_to 'New Lesson', new_lesson_path %>
+</div>
+
+<% if admin_signed_in? %>
+<div>
+  <%= link_to 'Edit Course Details', edit_course_path %>
+  <%= link_to 'Delete Course', course_path, method: :delete %>
+</div>
+<% end %>

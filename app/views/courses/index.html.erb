@@ -58,4 +58,27 @@ $(document).ready(function() {
 <% end %>
 <% end %>
 
+<% elsif admin_signed_in? %>
+
+<h1 class="heading">Welcome, Admin.</h1>
+
+<% Course.all.in_groups_of 3, false do |group| %>
+  <!-- Horizontal Line -->
+  <% group.each do |course| %>
+    <!-- Card -->
+    <div class="card-3">
+      <div class="card-image">
+      </div>
+      <p class="card-title"><%= link_to course.title, course_path(course) %></p>
+    </div>
+  <% end %>
+  <br />
+<% end %>
+
+<div class="card-3">
+  <div class="card-image">
+  </div>
+  <p class="card-title"><%= link_to 'New Course', new_course_path %></p>
+</div>
+
 <% end %>

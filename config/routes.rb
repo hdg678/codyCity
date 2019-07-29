@@ -3,11 +3,13 @@ Rails.application.routes.draw do
 
   root 'pages#root'
 
-  resources :organizations, only: [:index, :show]
+  #resources :organizations, only: [:index, :show]
 
   constraints(lambda { |request| Organization.find_by(name: request.subdomain) }) do
     get '/sign_in', to: 'pages#sign_in'
     get '/sign_up', to: 'pages#sign_up'
+
+    resource :organization, only: [:show, :edit, :update]
 
     resources :courses
     resources :lessons
