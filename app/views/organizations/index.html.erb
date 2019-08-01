@@ -1,3 +1,3 @@
 <% @organizations.each do |organization| %>
-  <h1><%= link_to organization.name, organization_path(organization) %></h1>
+  <h1><%= link_to organization.name, root_url(subdomain: organization.name) %></h1>
 <% end %>

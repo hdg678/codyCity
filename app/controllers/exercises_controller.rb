@@ -39,7 +39,8 @@ class ExercisesController < ApplicationController
   end
 
   def create
-    @exercise = Exercise.new(exercise_params)
+    @lesson = Lesson.find(params[:lesson_id])
+    @exercise = @lesson.exercises.new(exercise_params)
     if @exercise.save
       redirect_to @exercise
     else
@@ -54,6 +55,6 @@ class ExercisesController < ApplicationController
   end
 
   def exercise_params
-    params.require(:exercise).permit(:title, :instructions, :lesson_id, :point_value, :exercise_file, :test_file)
+    params.require(:exercise).permit(:title, :instructions, :point_value, :exercise_file, :test_file)
   end
 end

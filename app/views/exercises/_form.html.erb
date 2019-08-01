@@ -1,4 +1,16 @@
-<%= form_for(exercise) do |f| %>
+<%= form_for([@course, @lesson, @exercise], url: course_lesson_exercises_path) do |f| %>
+  <% if @exercise.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@exercise.errors.count, "error") %> prohibited this exercise from being saved:</h2>
+
+      <ul>
+      <% @exercise.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   <div class="field">
     <%= f.label :title %>
     <%= f.text_field :title %>
@@ -7,11 +19,6 @@
   <div class="field">
     <%= f.label :instructions %>
     <%= f.text_area :instructions %>
-  </div>
-
-  <div class="field">
-    <%= f.label :lesson_id %>
-    <%= f.text_field :lesson_id %>
   </div>
 
   <div class="field">

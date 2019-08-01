@@ -19,6 +19,7 @@ class LessonsController < ApplicationController
 
   # GET /lessons/new
   def new
+    @course = Course.find(params[:course_id])
     @lesson = Lesson.new
   end
 
@@ -29,16 +30,13 @@ class LessonsController < ApplicationController
   # POST /lessons
   # POST /lessons.json
   def create
-    @lesson = Lesson.new(lesson_params)
+    @course = Course.find(params[:course_id])
+    @lesson = @course.lessons.new(lesson_params)
 
-    respond_to do |format|
-      if @lesson.save
-        format.html { redirect_to @lesson, notice: 'Lesson was successfully created.' }
-        format.json { render :show, status: :created, location: @lesson }
-      else
-        format.html { render :new }
-        format.json { render json: @lesson.errors, status: :unprocessable_entity }
-      end
+    if @lesson.save
+      redirect_to @lesson, notice: 'Lesson was successfully created.'
+    else
+      render :new
     end
   end
 

@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   root 'pages#root'
 
-  #resources :organizations, only: [:index, :show]
+  get '/organizations', to: 'organizations#index'
 
   constraints(lambda { |request| Organization.find_by(name: request.subdomain) }) do
     get '/sign_in', to: 'pages#sign_in'
@@ -11,11 +11,13 @@ Rails.application.routes.draw do
 
     resource :organization, only: [:show, :edit, :update]
 
-    resources :courses
-    resources :lessons
-    resources :exercises do
-      get 'exercise_file', to: 'exercises#download_exercise_file'
-      get 'test_file', to: 'exercises#download_test_file'
+    resources :courses do
+      resources :lessons do
+        resources :exercises do
+          get 'exercise_file', to: 'exercises#download_exercise_file'
+          get 'test_file', to: 'exercises#download_test_file'
+        end
+      end
     end
 
     resources :students

@@ -26,7 +26,7 @@ $(document).ready(function() {
 <% @course.lessons.each do |lesson| %>
   <div class="lesson-container" data-lessonid="1">
     <button class="expand-button" data-lessonid="1">+</button>
-    <%= link_to lesson.title, lesson_path(lesson) %>
+    <%= link_to lesson.title, course_lesson_path(lesson) %>
     <div class="exercises">
       <% lesson.exercises.each do |exercise| %>
         <div class="exercise-listing">
@@ -34,7 +34,7 @@ $(document).ready(function() {
         </div>
       <% end %>
       <div class="exercise-listing">
-        <%= link_to "New Exercise", new_exercise_path %>
+        <%= link_to "New Exercise", new_course_lesson_exercise_path(@course, lesson) %>
       </div>
     </div>
     <hr />
@@ -42,7 +42,7 @@ $(document).ready(function() {
 <% end %>
 
 <div class="lesson-container">
-  <%= link_to 'New Lesson', new_lesson_path %>
+  <%= link_to 'New Lesson', new_course_lesson_path(@course) %>
 </div>
 
 <% if admin_signed_in? %>
