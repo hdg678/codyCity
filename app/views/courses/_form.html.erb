@@ -21,6 +21,11 @@
     <%= f.text_area :description %>
   </div>
 
+  <div class="field">
+    <%= f.label :developers %>
+    <%= f.collection_select :developer_ids, Developer.all, :id, :id, {}, { multiple: true } %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

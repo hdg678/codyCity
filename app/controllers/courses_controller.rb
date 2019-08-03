@@ -5,6 +5,9 @@ class CoursesController < ApplicationController
   # GET /courses.json
   def index
     @courses = Course.all
+    if developer_signed_in?
+      @courses = current_developer.courses
+    end
   end
 
   # GET /courses/1
@@ -26,7 +29,7 @@ class CoursesController < ApplicationController
   def create
     @course = Course.new(course_params)
     @course.organization = @organization
-    
+
     respond_to do |format|
       if @course.save
         format.html { redirect_to @course, notice: 'Course was successfully created.' }
@@ -70,6 +73,6 @@ class CoursesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def course_params
-      params.require(:course).permit(:title, :description)
+      params.require(:course).permit(:title, :description, developer_ids: [])
     end
 end

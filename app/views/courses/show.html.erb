@@ -30,7 +30,7 @@ $(document).ready(function() {
     <div class="exercises">
       <% lesson.exercises.each do |exercise| %>
         <div class="exercise-listing">
-          <%= link_to exercise.title, exercise_path(exercise) %>
+          <%= link_to exercise.title, course_lesson_exercise_path(lesson, exercise) %>
         </div>
       <% end %>
       <div class="exercise-listing">
@@ -44,6 +44,16 @@ $(document).ready(function() {
 <div class="lesson-container">
   <%= link_to 'New Lesson', new_course_lesson_path(@course) %>
 </div>
+
+<p>Developers:</p>
+
+<% @course.developers.each do |dev| %>
+  <div class="user-listing">
+    <%= link_to dev.user.name, developer_path(dev) %>
+  </div>
+<% end %>
+
+
 
 <% if admin_signed_in? %>
 <div>
