@@ -1,2 +1,15 @@
-<h1><%= @user.name %></h1>
-<p><%= @user.account.class.name %></p>
+<div class="profile">
+  <div class="profile-image">
+    <%= image_tag 'lessons-240.png' %>
+  </div>
+  <div class="details">
+    <h1><%= @user.name %></h1>
+    <p class="type"><%= @user.account.class.name %></p>
+    <p class="bio">bio</p>
+  </div>
+  <% if @user == current_user %>
+  <div class="actions">
+    <p><%= link_to 'Edit Account', edit_user_path(@user) %></p>
+  </div>
+  <% end %>
+</div>
