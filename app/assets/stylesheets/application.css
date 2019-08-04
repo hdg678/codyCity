@@ -109,12 +109,15 @@ body {
   background-color: #0896BB;
 }
 
+.sidebar a {
+  text-decoration: none;
+}
+
 .sidebar-icon {
   text-align: center;
   padding-top: 15px;
   padding-bottom: 15px;
   color: #FFFFFF;
-  text-decoration: none;
 }
 
 .sidebar-icon-selected {
@@ -275,13 +278,14 @@ body {
   display: block;
   text-decoration: none;
   width: 90%;
+  height: 30px;
   background-color: #0896BB;
   color: #FFFFFF;
   margin-left: 5%;
   margin-right: 5%;
   border-radius: 5px;
   border-width: 0px;
-  padding: 5px;
+  font-size: 20px;
 }
 
 .button:hover {

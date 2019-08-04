@@ -1,0 +1,41 @@
+<div class="sidebar-container">
+  <div class="sidebar">
+    <!-- Most of these just have placeholders -->
+    <%= link_to courses_path do %>
+      <div class="sidebar-icon <%= 'sidebar-icon-selected' if current_page?(courses_path) %>">
+        <%= image_tag 'home-240.png' %>
+        <p>Home</p>
+      </div>
+    <% end %>
+    <%= link_to root_path do %>
+      <div class="sidebar-icon <%= 'sidebar-icon-selected' if current_page?(root_path) %>">
+        <%= image_tag 'home-240.png' %>
+        <p>Slides</p>
+      </div>
+    <% end %>
+    <%= link_to root_path do %>
+      <div class="sidebar-icon <%= 'sidebar-icon-selected' if current_page?(root_path) %>">
+        <%= image_tag 'home-240.png' %>
+        <p>Students</p>
+      </div>
+    <% end %>
+    <%= link_to root_path do %>
+      <div class="sidebar-icon <%= 'sidebar-icon-selected' if current_page?(root_path) %>">
+        <%= image_tag 'home-240.png' %>
+        <p>Grades</p>
+      </div>
+    <% end %>
+    <%= link_to root_path do %>
+      <div class="sidebar-icon <%= 'sidebar-icon-selected' if current_page?(root_path) %>">
+        <%= image_tag 'home-240.png' %>
+        <p>Past Classes</p>
+      </div>
+    <% end %>
+    <%= link_to user_path(current_user) do %>
+      <div class="sidebar-icon <%= 'sidebar-icon-selected' if current_page?(user_path(current_user)) %>">
+        <%= image_tag 'lessons-240.png' %>
+        <p>Profile</p>
+      </div>
+    <% end %>
+  </div>
+</div>

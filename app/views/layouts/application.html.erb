@@ -10,8 +10,15 @@
 
   <body>
     <%= render 'layouts/header' %>
-    <%= render 'layouts/sidebar' %>
+    <% if user_signed_in? %>
+      <% #render 'layouts/sidebar' %>
+      <%= render user_type_get(student: 'layouts/sidebar/student', instructor: 'layouts/sidebar/instructor', developer: 'layouts/sidebar/developer', admin: 'layouts/sidebar/admin') %>
+    <% end %>
+    <% if user_signed_in? %>
     <div class="content content-with-sidebar content-with-header">
+    <% else %>
+    <div class="content content-with-header">
+    <% end %>
       <%= yield %>
     </div>
     <%= render 'layouts/footer' %>

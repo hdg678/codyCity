@@ -4,6 +4,8 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user
 
+  helper_method :user_signed_in?
+
   helper_method :current_student
   helper_method :current_instructor
   helper_method :current_developer
@@ -13,6 +15,8 @@ class ApplicationController < ActionController::Base
   helper_method :instructor_signed_in?
   helper_method :developer_signed_in?
   helper_method :admin_signed_in?
+
+  helper_method :user_type_get
 
   def require_login
     unless user_signed_in?
@@ -93,6 +97,19 @@ class ApplicationController < ActionController::Base
       @current_admin ||= current_user.account
     else
       @current_admin = nil
+    end
+  end
+
+  def user_type_get(hash)
+    case current_user.account
+    when Student
+      return hash[:student]
+    when Instructor
+      return hash[:instructor]
+    when Developer
+      return hash[:developer]
+    when Admin
+      return hash[:admin]
     end
   end
 end

@@ -1,0 +1,10 @@
+<div class="sidebar-container">
+  <div class="sidebar">
+    <%= link_to user_path(current_user) do %>
+      <div class="sidebar-icon <%= 'sidebar-icon-selected' if current_page?(user_path(current_user)) %>">
+        <%= image_tag 'lessons-240.png' %>
+        <p>Profile</p>
+      </div>
+    <% end %>
+  </div>
+</div>
