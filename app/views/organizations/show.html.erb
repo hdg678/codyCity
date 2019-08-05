@@ -1,0 +1,9 @@
+<h1><%= @organization.name %></h1>
+
+<div class="overview">
+  <h2>Overview</h2>
+  <p>Courses: <%= @organization.courses.count %></p>
+  <p>Users: <%= @organization.count_users %></p>
+  <p>Students: <%= @organization.students.count %></p>
+  <p>Instructors: <%= @organization.instructors.count %></p>
+</div>

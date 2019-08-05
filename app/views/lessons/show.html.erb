@@ -42,10 +42,10 @@ $(document).ready(function() {
   </div>
   <div id="challenges-display">
     <% @lesson.exercises.each do |exercise| %>
-      <h3><%= link_to exercise.title, exercise %></h3>
+      <h3><%= link_to exercise.title, course_lesson_exercise_path(@lesson, exercise) %></h3>
     <% end %>
     <% if instructor_signed_in? %>
-      <h3><%= link_to "New Exercise", new_exercise_path %></h3>
+      <h3><%= link_to "New Exercise", new_course_lesson_exercise_path(lesson_id: @lesson.id) %></h3>
     <% end %>
   </div>
 </div>

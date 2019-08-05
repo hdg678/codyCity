@@ -23,6 +23,18 @@ body {
   padding-top: 0px;
 }
 
+table {
+  border-spacing: 0px;
+}
+
+tr {
+  background-color: #FFFFFF;
+}
+
+tr:nth-child(even) {
+  background-color: #FEE0CB;
+}
+
 /* HEADER */
 
 .header {

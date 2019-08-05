@@ -25,7 +25,7 @@ Rails.application.routes.draw do
     resources :developers
     resources :admins
 
-    resources :users, only: [:show, :edit]
+    resources :users, only: [:show, :edit, :update]
 
     post 'login', to: 'sessions#create'
     delete 'logout', to: 'sessions#destroy'

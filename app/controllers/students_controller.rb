@@ -4,7 +4,12 @@ class StudentsController < ApplicationController
 
   # GET /students
 	def index
-	  @student = Student.all
+		if params[:course]
+			@course = Course.find(params[:course])
+			@students = @course.students
+		else
+			@students = Student.all
+		end
 	end
 
   # GET /students/1

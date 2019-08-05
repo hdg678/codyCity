@@ -7,6 +7,5 @@ class Student < ApplicationRecord
   has_many :student_courses
   has_many :courses, through: :student_courses
 
-  has_many :student_exercises
-  has_many :exercises, through: :student_exercises
+  has_many :submissions
 end

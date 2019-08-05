@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  student_id: 1
+  exercise_id: 1
+  notes: MyText
+  points: 1.5
+  max_points: 1.5
+
+two:
+  student_id: 1
+  exercise_id: 1
+  notes: MyText
+  points: 1.5
+  max_points: 1.5

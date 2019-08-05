@@ -15,5 +15,6 @@
 <br />
 
 <% if instructor_signed_in? %>
-  <%= link_to 'Edit', edit_exercise_path(@exercise) %>
+  <%= link_to 'Grades' %>
+  <%= link_to 'Edit', edit_course_lesson_exercise_path(@exercise) %>
 <% end %>

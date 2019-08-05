@@ -1,0 +1,21 @@
+<% if @course %>
+<h1>Students in <%= @course.title %>:</h1>
+<% end %>
+<div>
+<table>
+  <tr>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Email</th>
+    <th>Grade</th>
+  </tr>
+  <% @students.each do |s| %>
+  <tr>
+    <td><%= s.user.first_name %></td>
+    <td><%= s.user.last_name %></td>
+    <td><%= s.user.email %></td>
+    <td>GRADE</td>
+  </tr>
+  <% end %>
+</table>
+</div>
