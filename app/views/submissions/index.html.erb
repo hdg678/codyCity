@@ -1,0 +1,25 @@
+<h1>Grades</h1>
+<table>
+  <tr>
+    <th>Student</th>
+    <th>Due</th>
+    <th>Status</th>
+    <th>Score</th>
+  </tr>
+  <% @submissions.each do |s| %>
+  <tr>
+    <td><%= s.student.user.email %></td>
+    <td>
+    <%= link_to 'Due', course_submission_path(submission: s, id: s.id) %>
+    </td>
+    <td>
+    <% if s.persisted? %>
+    Down
+    <% else %>
+    Up
+    <% end %>
+    </td>
+    <td><%= s.points %></td>
+  </tr>
+  <% end %>
+</table>

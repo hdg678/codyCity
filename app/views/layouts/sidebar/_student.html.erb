@@ -6,6 +6,7 @@
         <p>Home</p>
       </div>
     <% end %>
+    <% if false %>
     <%= link_to root_path do %>
       <div class="sidebar-icon <%= 'sidebar-icon-selected' if params[:controller] == 'lessons' %>">
         <%= image_tag 'lessons-240.png' %>
@@ -23,6 +24,7 @@
         <%= image_tag 'lessons-240.png' %>
         <p>Profile</p>
       </div>
+    <% end %>
     <% end %>
   </div>
 </div>

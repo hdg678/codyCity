@@ -18,6 +18,8 @@ Rails.application.routes.draw do
           get 'test_file', to: 'exercises#download_test_file'
         end
       end
+
+      resources :submissions, only: [:index, :new, :create, :show, :edit, :update]
     end
 
     resources :students

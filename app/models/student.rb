@@ -4,8 +4,7 @@ class Student < ApplicationRecord
   has_one :profile, as: :viewable
   has_one :user, as: :account
 
-  has_many :student_courses
-  has_many :courses, through: :student_courses
+  has_and_belongs_to_many :courses, join_table: :student_courses
 
   has_many :submissions
 end

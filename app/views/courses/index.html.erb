@@ -17,45 +17,19 @@
 
 <% elsif student_signed_in? %>
 
-<% if current_student.courses.empty? %>
-<h1>You have no courses!</h1>
-<% else %>
-<script>
-//stolen from lesson index until we have slides object
-$(document).ready(function() {
-  // Start off hiding all exercises
-  lessons = $(".lesson-container");
-  for (var i = 0; i < lessons.length; ++i) {
-    $(lessons[i]).find(".exercises").hide();
-  }
+<h1 class="heading">Welcome, Student.</h1>
 
-  $(".expand-button").click(function(event) {
-    button = $(event.currentTarget);
-    if (button.html() == "-") {
-      button.html("+");
-    } else if (button.html() == "+") {
-      button.html("-");
-    }
-    exerciseContainer = $(event.currentTarget).parent().find(".exercises");
-    exerciseContainer.toggle();
-  });
-});
-</script>
-<h1><%= current_student.courses.last.title %></h1>
-<% current_student.courses.last.lessons.each do |lesson| %>
-  <div class="lesson-container" data-lessonid="1">
-    <button class="expand-button" data-lessonid="1">+</button>
-    <%= link_to lesson.title, lesson_path(lesson) %>
-    <div class="exercises">
-      <% lesson.exercises.each do |exercise| %>
-        <div class="exercise-listing">
-          <%= link_to exercise.title, exercise_path(exercise) %>
-        </div>
-      <% end %>
+<% Course.all.in_groups_of 3, false do |group| %>
+  <!-- Horizontal Line -->
+  <% group.each do |course| %>
+    <!-- Card -->
+    <div class="card-3">
+      <div class="card-image">
+      </div>
+      <p class="card-title"><%= link_to course.title, course_path(course) %></p>
     </div>
-    <hr />
-  </div>
-<% end %>
+  <% end %>
+  <br />
 <% end %>
 
 <% elsif admin_signed_in? %>
