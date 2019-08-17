@@ -1,0 +1,7 @@
+<h1>Classroom</h1>
+
+<%= link_to 'Students', students_path(classroom: @classroom) %>
+
+<%= link_to 'Slides', @classroom.course %>
+
+<%= link_to 'Grades', classroom_submissions_path(@classroom) %>

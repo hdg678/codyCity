@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  due_by: 2019-08-13
+  classroom_id: 1
+  points: 1
+  description: MyText
+
+two:
+  name: MyString
+  due_by: 2019-08-13
+  classroom_id: 1
+  points: 1
+  description: MyText

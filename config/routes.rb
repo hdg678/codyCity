@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
     resource :organization, only: [:show, :edit, :update]
 
+    # Course/class routes
     resources :courses do
       resources :lessons do
         resources :exercises do
@@ -21,7 +22,12 @@ Rails.application.routes.draw do
 
       resources :submissions, only: [:index, :new, :create, :show, :edit, :update]
     end
+    resources :classrooms do
+      resources :assignments
+      get 'submissions', to: 'classrooms#submissions'
+    end
 
+    # User routes
     resources :students
     resources :instructors
     resources :developers

@@ -45,8 +45,6 @@ $(document).ready(function() {
   <%= link_to 'New Lesson', new_course_lesson_path(@course) %>
 </div>
 
-<%= link_to 'Students', students_path(course: @course) %>
-
 <p>Developers:</p>
 
 <% @course.developers.each do |dev| %>
