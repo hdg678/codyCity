@@ -1,0 +1,5 @@
+<% @assignments.each do |assignment| %>
+  <h2><%= link_to assignment.name, classroom_assignment_path(@classroom, assignment) %></h2>
+<% end %>
+
+<%= link_to 'New Assignment', new_classroom_assignment_path(@classroom) %>

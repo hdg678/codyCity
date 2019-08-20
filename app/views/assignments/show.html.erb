@@ -1,0 +1,17 @@
+<h1>Assignment: <%= @assignment.name %></h1>
+
+Grades:
+<table>
+  <tr>
+    <th>Student</th>
+    <th>Submitted?</th>
+    <th>Grade</th>
+  </tr>
+  <% @assignment.grades.each do |grade| %>
+  <tr>
+    <td><%= grade.student.user.name %></td>
+    <td><%= grade.persisted? ? "Submitted" : "Unsubmitted" %></td>
+    <td><%= grade.points %> / <%= @assignment.points %></td>
+  </tr>
+  <% end %>
+</table>
